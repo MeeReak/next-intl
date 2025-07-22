@@ -1,6 +1,7 @@
+import React from "react";
 import { getTranslations } from "next-intl/server";
 
-export default async function NotFoundPage() {
+export default async function LanguageSwitcher() {
   const t = await getTranslations("notFound");
 
   return (

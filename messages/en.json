@@ -1,4 +1,8 @@
 {
+  "meta": {
+    "title": "My Awesome App",
+    "description": "Welcome to My Awesome App — localized for your needs!"
+  },
   "Homepage": {
     "title": "Welcome to the homepage",
     "description": "This is the homepage of the website"
@@ -6,5 +10,10 @@
   "About": {
     "title": "About us",
     "description": "This is the about page of the website"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "Sorry, we couldn't find that page.",
+    "back": "Click here to go back to the homepage"
   }
 }
