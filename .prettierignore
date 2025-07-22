@@ -1,0 +1,12 @@
+public
+.gitignore
+node_modules
+.next
+.husky
+coverage
+.prettierignore
+.stylelintignore
+.eslintignore
+.eslintrc.json
+.env*
+*.ico
