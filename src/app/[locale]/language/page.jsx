@@ -6,7 +6,7 @@ export default async function LanguageSwitcher() {
   const t = await getTranslations("Language");
 
   const schema = {
-    "@context": "https://next-intl-blackmyth-wukong.vercel.app",
+    "@context": "https://schema.org",
     "@type": "WebPage",
     name: t("title"),
     description: t("description")
