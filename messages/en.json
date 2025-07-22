@@ -15,5 +15,9 @@
     "title": "Page not found",
     "description": "Sorry, we couldn't find that page.",
     "back": "Click here to go back to the homepage"
+  },
+  "Language": {
+    "title": "Languages page",
+    "description": "This page allows you to switch languages."
   }
 }
