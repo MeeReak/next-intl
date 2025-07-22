@@ -1,9 +1,9 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: "https://yourdomain.com",
+  siteUrl: "https://next-intl-blackmyth-wukong.vercel.app",
   i18n: {
-    locales: ["en", "km"],
-    defaultLocale: "en"
+    locales: ["km", "en"],
+    defaultLocale: "km"
   },
   generateRobotsTxt: true
 };
