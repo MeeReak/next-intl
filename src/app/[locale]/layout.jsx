@@ -20,7 +20,7 @@ export async function generateMetadata({ params }) {
       title: t("meta.title"),
       description: t("meta.description"),
       type: "website",
-      image: "https://tailwindcss.com/opengraph-image.jpg?fbee406903dc9e88",
+      image: "https://profit.pakistantoday.com.pk/wp-content/uploads/2025/04/donkey-donkey-hd-free-download-world-hd-1200x630-cropped.jpg",
       url: isDefaultLocale ? baseUrl : `${baseUrl}/${locale}`,
       siteName: "Next Intl By Anonymous"
     },
