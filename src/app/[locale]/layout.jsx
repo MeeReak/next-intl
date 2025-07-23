@@ -16,6 +16,9 @@ export async function generateMetadata({ params }) {
   return {
     title: t("meta.title"),
     description: t("meta.description"),
+    icons: {
+      icon: "/favicon.ico" // or .png, .svg, etc.
+    },
     openGraph: {
       title: t("meta.title"),
       description: t("meta.description"),
