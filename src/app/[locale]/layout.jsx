@@ -7,38 +7,21 @@ import { LocaleSwitcher } from "../../components/LocaleSwitcher";
 import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata({ params }) {
-  const { locale } = params;
+  const { locale } = await params;
   const t = await getTranslations({ locale });
 
   const isDefaultLocale = locale === "km";
   const baseUrl = "https://next-intl-blackmyth-wukong.vercel.app";
-  const imageUrl =
-    "https://profit.pakistantoday.com.pk/wp-content/uploads/2025/04/donkey-donkey-hd-free-download-world-hd-1200x630-cropped.jpg";
 
   return {
     title: t("meta.title"),
     description: t("meta.description"),
-    metadataBase: new URL(baseUrl),
     openGraph: {
       title: t("meta.title"),
       description: t("meta.description"),
       type: "website",
       url: isDefaultLocale ? baseUrl : `${baseUrl}/${locale}`,
-      siteName: "Next Intl By Anonymous",
-      images: [
-        {
-          url: imageUrl,
-          width: 1200,
-          height: 630,
-          alt: "Donkey Preview"
-        }
-      ]
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: t("meta.title"),
-      description: t("meta.description"),
-      images: [imageUrl]
+      siteName: "Next Intl By Anonymous"
     },
     alternates: {
       canonical: isDefaultLocale ? baseUrl : `${baseUrl}/${locale}`,
