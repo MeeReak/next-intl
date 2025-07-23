@@ -19,9 +19,10 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: t("meta.title"),
       description: t("meta.description"),
-      images: ["/src/app/[locale]/favicon.ico"],
+      type: "website",
+      images: ["/developer.jpg"],
       url: isDefaultLocale ? baseUrl : `${baseUrl}/${locale}`,
-      siteName: t("meta.title")
+      siteName: "Next Intl By Anonymous",
     },
     alternates: {
       canonical: isDefaultLocale ? baseUrl : `${baseUrl}/${locale}`,
