@@ -1,5 +1,4 @@
 import { getTranslations } from "next-intl/server";
-import Head from "next/head";
 
 export default async function LanguagePage() {
   const t = await getTranslations("Language");
@@ -29,17 +28,13 @@ export default async function LanguagePage() {
 
   return (
     <>
-      <Head>
-        <title>{t("title")}</title>
-        <meta name="description" content={t("excerpt")} />
+      <main>
+        <h1>{t("title")}</h1>
+        <p>{t("description")}</p>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
         />
-      </Head>
-      <main>
-        <h1>{t("title")}</h1>
-        <p>{t("description")}</p>
       </main>
     </>
   );

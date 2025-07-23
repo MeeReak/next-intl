@@ -1,9 +1,4 @@
-import { getTranslations } from "next-intl/server";
-import Head from "next/head";
-
 export default async function LanguageSwitchPage() {
-  const t = await getTranslations("Language");
-
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "HowTo",
@@ -31,17 +26,6 @@ export default async function LanguageSwitchPage() {
 
   return (
     <>
-      <Head>
-        <title>How to switch languages</title>
-        <meta
-          name="description"
-          content="Learn how to switch the language on our site in 3 easy steps."
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
-        />
-      </Head>
       <main>
         <h1>How to Switch Languages</h1>
         <ol>
@@ -49,6 +33,10 @@ export default async function LanguageSwitchPage() {
           <li>Select your preferred language</li>
           <li>The page will reload in that language</li>
         </ol>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+        />
       </main>
     </>
   );
