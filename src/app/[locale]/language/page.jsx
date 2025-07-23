@@ -6,7 +6,7 @@ export default async function Language() {
 
   const schemaData = {
     "@context": "https://schema.org",
-    "@type": "LanguagePage",
+    "@type": "WebPage",
     headline: t("title"),
     description: t("description")
   };
