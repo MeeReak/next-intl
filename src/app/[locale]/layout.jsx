@@ -26,7 +26,7 @@ export async function generateMetadata({ params }) {
       url: isDefaultLocale ? baseUrl : `${baseUrl}/${locale}`,
       images: [
         {
-          url: "https://tailwindcss.com/opengraph-image.jpg?fbee406903dc9e88",
+          url: "https://profit.pakistantoday.com.pk/wp-content/uploads/2025/04/donkey-donkey-hd-free-download-world-hd-1200x630-cropped.jpg",
           width: 1200,
           height: 630,
           alt: "Next Intl Blackmyth Wukong"
