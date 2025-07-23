@@ -49,10 +49,11 @@ export async function generateMetadata({ params }) {
           url: "https://profit.pakistantoday.com.pk/wp-content/uploads/2025/04/donkey-donkey-hd-free-download-world-hd-1200x630-cropped.jpg",
           width: 1200,
           height: 630,
-          alt: "Next Intl Blackmyth Wukong"
+          alt: "Tithyareak App"
         }
       ],
-      siteName: "Next Intl By Anonymous"
+      siteName: "Tithyareak App",
+      locale: locale === "km" ? "km-KH" : "en-US"
     },
     alternates: {
       canonical: isDefaultLocale ? baseUrl : `${baseUrl}/${locale}`,
