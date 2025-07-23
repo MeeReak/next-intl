@@ -1,14 +1,13 @@
-import React from "react";
 import { getTranslations } from "next-intl/server";
 import Head from "next/head";
 
-export default async function LanguageSwitcher() {
+export default async function Language() {
   const t = await getTranslations("Language");
 
-  const schema = {
+  const schemaData = {
     "@context": "https://schema.org",
-    "@type": "WebPage",
-    name: t("title"),
+    "@type": "LanguagePage",
+    headline: t("title"),
     description: t("description")
   };
 
@@ -16,17 +15,14 @@ export default async function LanguageSwitcher() {
     <>
       <Head>
         <title>{t("title")}</title>
-        <meta name="description" content={t("description")} />
+        <meta name="description" content={t("excerpt")} />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
         />
       </Head>
-
-      <main>
-        <h1>{t("title")}</h1>
-        <p>{t("description")}</p>
-      </main>
+      <h1>{t("title")}</h1>
+      <p>{t("description")}</p>
     </>
   );
 }
