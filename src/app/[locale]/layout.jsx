@@ -24,6 +24,7 @@ export async function generateMetadata({ params }) {
       description: t("meta.description"),
       type: "website",
       url: isDefaultLocale ? baseUrl : `${baseUrl}/${locale}`,
+      image: "https://tailwindcss.com/opengraph-image.jpg?fbee406903dc9e88",
       siteName: "Next Intl By Anonymous"
     },
     alternates: {
