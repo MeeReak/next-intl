@@ -20,7 +20,7 @@ export async function generateMetadata({ params }) {
       title: t("meta.title"),
       description: t("meta.description"),
       type: "website",
-      images: "https://tailwindcss.com/opengraph-image.jpg?fbee406903dc9e88",
+      image: "https://tailwindcss.com/opengraph-image.jpg?fbee406903dc9e88",
       url: isDefaultLocale ? baseUrl : `${baseUrl}/${locale}`,
       siteName: "Next Intl By Anonymous"
     },
