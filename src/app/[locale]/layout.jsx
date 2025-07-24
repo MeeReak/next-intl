@@ -61,7 +61,8 @@ export async function generateMetadata({ params }) {
         en: `${baseUrl}/en`,
         km: baseUrl
       }
-    }
+    },
+    siteName: "Tithyareak App By Anonymous"
   };
 }
 
