@@ -76,6 +76,14 @@ export default async function LocaleLayout({ children, params }) {
 
   return (
     <NextIntlClientProvider messages={messages}>
+      <head>
+        <link
+          rel="icon"
+          href="/favicon.ico"
+          sizes="48x48"
+          type="image/x-icon"
+        />
+      </head>
       <LocaleSwitcher />
       {children}
     </NextIntlClientProvider>
