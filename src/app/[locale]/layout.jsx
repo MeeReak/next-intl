@@ -52,7 +52,7 @@ export async function generateMetadata({ params }) {
           alt: "Tithyareak App"
         }
       ],
-      siteName: "Tithyareak App",
+      siteName: "Tithyareak App By Anonymous",
       locale: locale === "km" ? "km-KH" : "en-US"
     },
     alternates: {
@@ -61,8 +61,7 @@ export async function generateMetadata({ params }) {
         en: `${baseUrl}/en`,
         km: baseUrl
       }
-    },
-    siteName: "Tithyareak App By Anonymous"
+    }
   };
 }
 
@@ -77,14 +76,6 @@ export default async function LocaleLayout({ children, params }) {
 
   return (
     <NextIntlClientProvider messages={messages}>
-      <head>
-        <link
-          rel="icon"
-          href="/favicon.ico"
-          sizes="48x48"
-          type="image/x-icon"
-        />
-      </head>
       <LocaleSwitcher />
       {children}
     </NextIntlClientProvider>
