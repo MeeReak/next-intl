@@ -10,7 +10,9 @@ module.exports = {
     { loc: "/en/", lastmod: new Date().toISOString() },
     { loc: "/km/", lastmod: new Date().toISOString() },
     { loc: "/en/language", lastmod: new Date().toISOString() },
-    { loc: "/km/language", lastmod: new Date().toISOString() }
+    { loc: "/km/language", lastmod: new Date().toISOString() },
+    { loc: "/en/case-convert", lastmod: new Date().toISOString() },
+    { loc: "/km/case-convert", lastmod: new Date().toISOString() }
     // Add other paths manually or fetch from your CMS/db
   ]
   // transform: async (config, path) => {

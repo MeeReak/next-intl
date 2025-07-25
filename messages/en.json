@@ -1,11 +1,12 @@
 {
   "meta": {
-    "title": "Tithyareak App",
-    "description": "Welcome to My Awesome App — localized for your needs!"
+    "title": "Anonymous App by Rin Tithyareak",
+    "description": "Welcome to my Anonymous App - with many tools that you don't wanna know!"
   },
   "Homepage": {
-    "title": "Welcome to the homepage",
-    "description": "This is the homepage of the website"
+    "title": "Anonymous App",
+    "description": "Anonymous App have many tools that you don't wanna use!!",
+    "linkText": "Just click here"
   },
   "About": {
     "title": "About us",
@@ -20,5 +21,26 @@
     "title": "Languages page",
     "description": "This page allows you to switch languages.",
     "excerpt": "Explore our language learning tools and tips for every level."
+  },
+  "CaseConverter": {
+    "title": "Case Converter",
+    "description": "Convert text to various case formats easily.",
+    "inputLabel": "Type text, words, letters, or symbols here:",
+    "sentence": "Sentence case",
+    "lower": "lower case",
+    "upper": "UPPER CASE",
+    "capitalized": "Capitalized Case",
+    "alternating": "aLtErNaTiNg cAsE",
+    "titleCase": "Title Case",
+    "inverse": "InVeRsE CaSe",
+    "inverseUnderscore": "Inverse Underscore",
+    "download": "Download",
+    "copy": "Copy",
+    "clear": "Clear",
+    "stats": {
+      "character": "Character Count",
+      "word": "Word Count",
+      "line": "Line Count"
+    }
   }
 }

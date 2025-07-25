@@ -1,4 +1,4 @@
-import "./globals.css";
+import "./../globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -16,6 +16,7 @@ export async function generateMetadata({ params }) {
   return {
     title: t("meta.title"),
     description: t("meta.description"),
+
     icons: {
       icon: [
         { url: "/favicon.ico", sizes: "any", type: "image/x-icon" },
@@ -39,6 +40,7 @@ export async function generateMetadata({ params }) {
         }
       ]
     },
+
     openGraph: {
       title: t("meta.title"),
       description: t("meta.description"),
@@ -49,10 +51,10 @@ export async function generateMetadata({ params }) {
           url: "https://profit.pakistantoday.com.pk/wp-content/uploads/2025/04/donkey-donkey-hd-free-download-world-hd-1200x630-cropped.jpg",
           width: 1200,
           height: 630,
-          alt: "Tithyareak App"
+          alt: "Anonymous App"
         }
       ],
-      siteName: "Tithyareak App By Anonymous",
+      siteName: "Anonymous App By Anonymous",
       locale: locale === "km" ? "km-KH" : "en-US"
     },
     alternates: {
@@ -61,6 +63,35 @@ export async function generateMetadata({ params }) {
         en: `${baseUrl}/en`,
         km: baseUrl
       }
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: t("meta.title"),
+      description: t("meta.description"),
+      images: ["/og-image.jpg"]
+    },
+
+    alternates: {
+      canonical: isDefaultLocale ? baseUrl : `${baseUrl}/${locale}`,
+      languages: {
+        en: `${baseUrl}/en`,
+        km: `${baseUrl}`
+      }
+    },
+
+    keywords: [
+      "case converter",
+      "text transformer",
+      "uppercase",
+      "lowercase",
+      "title case",
+      "free tool"
+    ],
+    robots: {
+      index: true,
+      follow: true,
+      nocache: false
     }
   };
 }
@@ -71,13 +102,15 @@ export default async function LocaleLayout({ children, params }) {
   if (!routing.locales.includes(locale)) {
     notFound();
   }
-
+  const fontClass = locale === "km" ? "font-kantumruy" : "font-nunito";
   const messages = await getMessages();
 
   return (
-    <NextIntlClientProvider messages={messages}>
-      <LocaleSwitcher />
-      {children}
-    </NextIntlClientProvider>
+    <div className={fontClass}>
+      <NextIntlClientProvider messages={messages}>
+        <LocaleSwitcher />
+        {children}
+      </NextIntlClientProvider>
+    </div>
   );
 }
