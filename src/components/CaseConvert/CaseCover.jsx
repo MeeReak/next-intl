@@ -7,37 +7,41 @@ import { useState } from "react";
 export const CaseCover = () => {
   const t = useTranslations("CaseConverter");
   const [text, setText] = useState("");
+  const [originalText, setOriginalText] = useState("");
 
   const handleCaseChange = (type) => {
-    let newText = text;
+    let newText = originalText;
 
     switch (type) {
       case "sentence":
-        newText = text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+        newText =
+          newText.charAt(0).toUpperCase() + newText.slice(1).toLowerCase();
         break;
       case "lower":
-        newText = text.toLowerCase();
+        newText = newText.toLowerCase();
         break;
       case "upper":
-        newText = text.toUpperCase();
+        newText = newText.toUpperCase();
         break;
       case "capitalized":
-        newText = text
+        newText = newText
           .toLowerCase()
           .replace(/\b\w/g, (char) => char.toUpperCase());
         break;
       case "alternating":
-        newText = [...text]
+        newText = [...newText]
           .map((char, i) =>
             i % 2 === 0 ? char.toLowerCase() : char.toUpperCase()
           )
           .join("");
         break;
       case "title":
-        newText = text.toLowerCase().replace(/\b(\w)/g, (s) => s.toUpperCase());
+        newText = newText
+          .toLowerCase()
+          .replace(/\b(\w)/g, (s) => s.toUpperCase());
         break;
       case "inverse":
-        newText = [...text]
+        newText = [...newText]
           .map((char) =>
             char === char.toLowerCase()
               ? char.toUpperCase()
@@ -46,7 +50,7 @@ export const CaseCover = () => {
           .join("");
         break;
       case "inverse-underscore":
-        newText = text.toUpperCase().replace(/ /g, "_");
+        newText = newText.toUpperCase().replace(/ /g, "_");
         break;
       default:
         break;
@@ -76,8 +80,11 @@ export const CaseCover = () => {
         <textarea
           rows={5}
           value={text}
-          onChange={(e) => setText(e.target.value)}
-          className="w-full border rounded p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          onChange={(e) => {
+            setText(e.target.value);
+            setOriginalText(e.target.value);
+          }}
+          className="w-full border rounded p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
         ></textarea>
 
         <div className="text-sm text-gray-600 mt-2">

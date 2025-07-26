@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "postbuild": "next-sitemap",
-    "build:local": "prettier --write . && stylelint --allow-empty-input && next build"
+    "build:local": "prettier --write . && stylelint --allow-empty-input && next build",
+    "clean": "rm -rf .next && rm -rf node_modules && yarn cache clean"
   },
   "dependencies": {
     "eslint-config-prettier": "^10.1.8",

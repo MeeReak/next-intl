@@ -2,18 +2,18 @@ import "./globals.css";
 import { Nunito } from "next/font/google";
 import { Kantumruy_Pro } from "next/font/google";
 
-// Configure Google Font for English
 const nunito = Nunito({
   subsets: ["latin"],
   variable: "--font-nunito",
-  display: "swap"
+  display: "swap",
+  preload: true
 });
 
-// Configure local font for Khmer (assuming you have the font files)
 const kantumruyPro = Kantumruy_Pro({
   subsets: ["khmer"],
   variable: "--font-kantumruy-pro",
-  display: "swap"
+  display: "swap",
+  preload: true
 });
 
 export default function RootLayout({ children }) {

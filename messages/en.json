@@ -6,7 +6,8 @@
   "Homepage": {
     "title": "Anonymous App",
     "description": "Anonymous App have many tools that you don't wanna use!!",
-    "linkText": "Just click here"
+    "linkText": "Just click here",
+    "developerAlt": "developer"
   },
   "About": {
     "title": "About us",

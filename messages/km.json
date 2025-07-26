@@ -6,7 +6,8 @@
   "Homepage": {
     "title": "Anonymous App",
     "description": "Anonymous App មានរបស់លេងជាច្រើនដែលអ្នកមិនចង់ប្រើ!!",
-    "linkText": "សូមចុចទីនេះ"
+    "linkText": "សូមចុចទីនេះ",
+    "developerAlt": "អ្នកអភិវឌ្ឍន៍"
   },
   "About": {
     "title": "អំពីយើង",
@@ -26,14 +27,14 @@
     "title": "កម្មវិធីបម្លែងអក្សរ",
     "description": "បម្លែងអត្ថបទទៅជារូបមន្តអក្សរផ្សេងៗបានយ៉ាងងាយស្រួល។",
     "inputLabel": "វាយអត្ថបទ អក្សរ ឬនិមិត្តសញ្ញានៅទីនេះ៖",
-    "sentence": "អក្សរចាប់ផ្តើមប្រយោគ",
-    "lower": "អក្សរតូច",
-    "upper": "អក្សរធំ",
-    "capitalized": "អក្សរដែលចាប់ផ្តើមជាព្រះរាជាណាចក្រ",
-    "alternating": "អក្សរបន្លាយពណ៌",
-    "titleCase": "អក្សរចំណងជើង",
-    "inverse": "បម្លែងអក្សរធំ/តូច",
-    "inverseUnderscore": "អក្សរធំ ជាមួយសញ្ញា _",
+    "sentence": "Sentence case",
+    "lower": "lower case",
+    "upper": "UPPER CASE",
+    "capitalized": "Capitalized Case",
+    "alternating": "aLtErNaTiNg cAsE",
+    "titleCase": "Title Case",
+    "inverse": "InVeRsE CaSe",
+    "inverseUnderscore": "Inverse Underscore",
     "download": "ទាញយក",
     "copy": "ចម្លង",
     "clear": "សម្អាត",
