@@ -74,10 +74,14 @@ export const CaseCover = () => {
   return (
     <div>
       <div className="bg-white p-6 rounded shadow-md max-w-3xl mx-auto">
-        <label className="block text-black font-semibold mb-2">
+        <label
+          htmlFor="case-textarea"
+          className="block text-black font-semibold mb-2"
+        >
           {t("inputLabel")}
         </label>
         <textarea
+          id="case-textarea"
           rows={5}
           value={text}
           onChange={(e) => {

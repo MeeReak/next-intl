@@ -88,7 +88,7 @@ export default async function Home({ params }) {
     <>
       <main className="p-6 max-w-3xl mx-auto" role="main">
         <header>
-          <h1 className="text-cyan-500 text-3xl font-semibold mb-4">
+          <h1 className="text-cyan-800 text-3xl font-semibold mb-4">
             {t("title")}
           </h1>
           <p className="mb-6">{t("description")}</p>
@@ -106,7 +106,7 @@ export default async function Home({ params }) {
         <nav className="mt-6">
           <Link
             href="/case-convert"
-            className="text-blue-500 underline block cursor-pointer"
+            className="text-blue-800 underline block cursor-pointer"
           >
             {t("linkText") ?? "Try Case Converter Tool"}
           </Link>
