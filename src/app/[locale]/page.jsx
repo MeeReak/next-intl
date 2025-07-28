@@ -25,14 +25,14 @@ export async function generateMetadata({ params }) {
       title: t("title"),
       description: t("description"),
       url,
-      siteName: "Anonymous App",
+      siteName: "Tithyareak App",
       locale: locale === "km" ? "km-KH" : "en-US",
       images: [
         {
           url: "https://profit.pakistantoday.com.pk/wp-content/uploads/2025/04/donkey-donkey-hd-free-download-world-hd-1200x630-cropped.jpg",
           width: 1200,
           height: 630,
-          alt: "Anonymous App"
+          alt: "Tithyareak App"
         }
       ]
     },
@@ -45,7 +45,7 @@ export async function generateMetadata({ params }) {
           url: "https://profit.pakistantoday.com.pk/wp-content/uploads/2025/04/donkey-donkey-hd-free-download-world-hd-1200x630-cropped.jpg",
           width: 1200,
           height: 630,
-          alt: "Anonymous App"
+          alt: "Tithyareak App"
         }
       ]
     },
@@ -56,7 +56,7 @@ export async function generateMetadata({ params }) {
         "x-default": baseUrl
       }
     },
-    keywords: [t("title"), t("description"), "Anonymous App", "Useful Tool"],
+    keywords: [t("title"), t("description"), "Tithyareak App", "Useful Tool"],
     robots: {
       index: true,
       follow: true
@@ -80,7 +80,7 @@ export default async function Home({ params }) {
     inLanguage: locale === "km" ? "km-KH" : "en-US",
     publisher: {
       "@type": "Organization",
-      name: "Anonymous App"
+      name: "Tithyareak App"
     }
   };
 
@@ -127,7 +127,7 @@ export default async function Home({ params }) {
                 : `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}`,
             publisher: {
               "@type": "Organization",
-              name: "Anonymous App"
+              name: "Tithyareak App"
             }
           })
         }}

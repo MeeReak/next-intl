@@ -42,13 +42,13 @@ export async function generateMetadata({ params }) {
       url: isDefaultLocale ? baseUrl : `${baseUrl}/${locale}`,
       type: "website",
       locale: locale === "km" ? "km-KH" : "en-US",
-      siteName: "Anonymous App",
+      siteName: "Tithyareak App",
       images: [
         {
           url: "https://profit.pakistantoday.com.pk/wp-content/uploads/2025/04/donkey-donkey-hd-free-download-world-hd-1200x630-cropped.jpg",
           width: 1200,
           height: 630,
-          alt: "Anonymous App | Case Converter Tool"
+          alt: "Tithyareak App | Case Converter Tool"
         }
       ]
     },
