@@ -21,6 +21,7 @@ export const LocaleSwitcher = () => {
   return (
     <div className=" fixed right-5 top-5 cursor-pointer" onClick={toggleLocale}>
       <Image src={langPath} width={25} height={25} alt="image" />
+
     </div>
   );
 };

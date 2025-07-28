@@ -73,11 +73,8 @@ export const CaseCover = () => {
 
   return (
     <div>
-      <div className="bg-white p-6 rounded shadow-md max-w-3xl mx-auto">
-        <label
-          htmlFor="case-textarea"
-          className="block text-black font-semibold mb-2"
-        >
+      <div className="p-6 rounded shadow-md max-w-3xl mx-auto border">
+        <label htmlFor="case-textarea" className="block font-semibold mb-2">
           {t("inputLabel")}
         </label>
         <textarea
@@ -88,10 +85,10 @@ export const CaseCover = () => {
             setText(e.target.value);
             setOriginalText(e.target.value);
           }}
-          className="w-full border rounded p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
+          className="w-full border rounded p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
         ></textarea>
 
-        <div className="text-sm text-gray-600 mt-2">
+        <div className="text-sm mt-2">
           {t("stats.character")}: {text.length} | {t("stats.word")}:{" "}
           {text.trim().split(/\s+/).filter(Boolean).length} | {t("stats.line")}:{" "}
           {text.split("\n").length}

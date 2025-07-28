@@ -5,6 +5,8 @@ import { notFound } from "next/navigation";
 import { routing } from "../../../src/i18n/routing";
 import { LocaleSwitcher } from "../../components/LocaleSwitcher";
 import { getTranslations } from "next-intl/server";
+import { ThemeProvider } from "next-themes";
+import ThemeToggle from "../../components/ThemeSwitcher";
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
@@ -109,15 +111,17 @@ export default async function LocaleLayout({ children, params }) {
   if (!routing.locales.includes(locale)) {
     notFound();
   }
-  const fontClass = locale === "km" ? "font-kantumruy" : "font-nunito";
+
   const messages = await getMessages();
+  const fontClass = locale === "km" ? "font-kantumruy" : "font-nunito";
 
   return (
-    <div className={fontClass}>
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <NextIntlClientProvider messages={messages}>
         <LocaleSwitcher />
-        {children}
+        <ThemeToggle />
+        <div className={fontClass}>{children}</div>
       </NextIntlClientProvider>
-    </div>
+    </ThemeProvider>
   );
 }

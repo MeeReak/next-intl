@@ -18,7 +18,11 @@ const kantumruyPro = Kantumruy_Pro({
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="km" className={`${nunito.variable} ${kantumruyPro.variable}`}>
+    <html
+      lang="km"
+      className={`${nunito.variable} ${kantumruyPro.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         <link
           rel="icon"
