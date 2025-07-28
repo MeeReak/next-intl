@@ -15,8 +15,13 @@
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  /* color: var(--foreground);
+  background: var(--background); */
+  background-color: #ffffff;
+  color: #000000;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 :root {
@@ -38,3 +43,14 @@ body {
   font-feature-settings: "kern" 1;
   text-rendering: optimizeLegibility;
 } */
+
+/* Dark theme using the 'dark' class on <html> */
+html.dark body {
+  background-color: #111827;
+  color: #f9fafb;
+}
+
+/* Optional: style other elements globally */
+html.dark a {
+  color: #93c5fd;
+}
