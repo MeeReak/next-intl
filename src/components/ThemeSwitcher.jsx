@@ -2,6 +2,7 @@
 
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import { Sun, Moon } from "lucide-react";
 
 export default function ThemeToggle() {
   const { theme, setTheme } = useTheme();
@@ -18,7 +19,7 @@ export default function ThemeToggle() {
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
       className="p-2 fixed right-3 top-12 cursor-pointer"
     >
-      {theme === "dark" ? "☀️" : "🌙"}
+      {theme === "dark" ? <Sun /> : <Moon />}
     </button>
   );
 }

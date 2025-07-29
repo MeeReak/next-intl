@@ -86,7 +86,7 @@ export default async function Home({ params }) {
 
   return (
     <>
-      <main className="p-6 max-w-3xl mx-auto" role="main">
+      <main className="p-6 " role="main">
         <header>
           <h1 className="text-cyan-800 text-3xl font-semibold mb-4">
             {t("title")}

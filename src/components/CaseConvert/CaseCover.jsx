@@ -1,8 +1,39 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { CASE_TYPES } from "@/Util/Constant";
+
+const caseTransform = (type, text) => {
+  switch (type) {
+    case "sentence":
+      return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+    case "lower":
+      return text.toLowerCase();
+    case "upper":
+      return text.toUpperCase();
+    case "capitalized":
+      return text.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase());
+    case "alternating":
+      return [...text]
+        .map((char, i) =>
+          i % 2 === 0 ? char.toLowerCase() : char.toUpperCase()
+        )
+        .join("");
+    case "title":
+      return text.toLowerCase().replace(/\b(\w)/g, (s) => s.toUpperCase());
+    case "inverse":
+      return [...text]
+        .map((char) =>
+          char === char.toLowerCase() ? char.toUpperCase() : char.toLowerCase()
+        )
+        .join("");
+    case "inverse-underscore":
+      return text.toUpperCase().replace(/ /g, "_");
+    default:
+      return text;
+  }
+};
 
 export const CaseCover = () => {
   const t = useTranslations("CaseConverter");
@@ -10,138 +41,59 @@ export const CaseCover = () => {
   const [originalText, setOriginalText] = useState("");
 
   const handleCaseChange = (type) => {
-    let newText = originalText;
+    setText(caseTransform(type, originalText));
+  };
 
-    switch (type) {
-      case "sentence":
-        newText =
-          newText.charAt(0).toUpperCase() + newText.slice(1).toLowerCase();
-        break;
-      case "lower":
-        newText = newText.toLowerCase();
-        break;
-      case "upper":
-        newText = newText.toUpperCase();
-        break;
-      case "capitalized":
-        newText = newText
-          .toLowerCase()
-          .replace(/\b\w/g, (char) => char.toUpperCase());
-        break;
-      case "alternating":
-        newText = [...newText]
-          .map((char, i) =>
-            i % 2 === 0 ? char.toLowerCase() : char.toUpperCase()
-          )
-          .join("");
-        break;
-      case "title":
-        newText = newText
-          .toLowerCase()
-          .replace(/\b(\w)/g, (s) => s.toUpperCase());
-        break;
-      case "inverse":
-        newText = [...newText]
-          .map((char) =>
-            char === char.toLowerCase()
-              ? char.toUpperCase()
-              : char.toLowerCase()
-          )
-          .join("");
-        break;
-      case "inverse-underscore":
-        newText = newText.toUpperCase().replace(/ /g, "_");
-        break;
-      default:
-        break;
-    }
-
-    setText(newText);
+  const handleTextareaChange = (e) => {
+    setText(e.target.value);
+    setOriginalText(e.target.value);
   };
 
   const downloadTextFile = () => {
     const blob = new Blob([text], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
-
     const a = document.createElement("a");
     a.href = url;
     a.download = "converted-text.txt";
     a.click();
-
     URL.revokeObjectURL(url);
+  };
+
+  const stats = {
+    character: text.length,
+    word: text.trim().split(/\s+/).filter(Boolean).length,
+    line: text.split("\n").length
   };
 
   return (
     <div>
-      <div className="p-6 rounded shadow-md max-w-3xl mx-auto border">
-        <label htmlFor="case-textarea" className="block font-semibold mb-2">
+      <div className="p-7 rounded shadow-md max-w-3xl mx-auto border">
+        <label htmlFor="case-textarea" className="block font-semibold mb-5">
           {t("inputLabel")}
         </label>
         <textarea
           id="case-textarea"
           rows={5}
           value={text}
-          onChange={(e) => {
-            setText(e.target.value);
-            setOriginalText(e.target.value);
-          }}
+          onChange={handleTextareaChange}
           className="w-full border rounded p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
         ></textarea>
 
         <div className="text-sm mt-2">
-          {t("stats.character")}: {text.length} | {t("stats.word")}:{" "}
-          {text.trim().split(/\s+/).filter(Boolean).length} | {t("stats.line")}:{" "}
-          {text.split("\n").length}
+          {t("stats.character")}: {stats.character} | {t("stats.word")}:{" "}
+          {stats.word} | {t("stats.line")}: {stats.line}
         </div>
+
         <div className="flex flex-wrap gap-2 mt-4">
-          <button
-            onClick={() => handleCaseChange("sentence")}
-            className="text-black border px-4 py-1 bg-gray-200 rounded-sm"
-          >
-            {t("sentence")}
-          </button>
-          <button
-            onClick={() => handleCaseChange("lower")}
-            className="text-black border px-4 py-1 bg-gray-200 rounded-sm"
-          >
-            {t("lower")}
-          </button>
-          <button
-            onClick={() => handleCaseChange("upper")}
-            className="text-black border px-4 py-1 bg-gray-200 rounded-sm"
-          >
-            {t("upper")}
-          </button>
-          <button
-            onClick={() => handleCaseChange("capitalized")}
-            className="text-black border px-4 py-1 bg-gray-200 rounded-sm"
-          >
-            {t("capitalized")}
-          </button>
-          <button
-            onClick={() => handleCaseChange("alternating")}
-            className="text-black border px-4 py-1 bg-gray-200 rounded-sm"
-          >
-            {t("alternating")}
-          </button>
-          <button
-            onClick={() => handleCaseChange("title")}
-            className="text-black border px-4 py-1 bg-gray-200 rounded-sm"
-          >
-            {t("titleCase")}
-          </button>
-          <button
-            onClick={() => handleCaseChange("inverse")}
-            className="text-black border px-4 py-1 bg-gray-200 rounded-sm"
-          >
-            {t("inverse")}
-          </button>
-          <button
-            onClick={() => handleCaseChange("inverse-underscore")}
-            className="text-black border px-4 py-1 bg-gray-200 rounded-sm"
-          >
-            {t("inverseUnderscore")}
-          </button>
+          {CASE_TYPES.map(({ key, label }) => (
+            <button
+              key={key}
+              onClick={() => handleCaseChange(key)}
+              className="text-black border px-4 py-1 bg-gray-200 rounded-sm"
+            >
+              {t(label)}
+            </button>
+          ))}
         </div>
 
         <div className="flex gap-2 mt-4 flex-wrap">
