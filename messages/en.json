@@ -43,5 +43,17 @@
       "word": "Word Count",
       "line": "Line Count"
     }
+  },
+  "GoogleLen": {
+    "title": "Google Len",
+    "description": "Upload your image or PDF file for processing",
+    "dragLabel": "Drag your file here",
+    "clickLabel": "or click to select an image/PDF",
+    "preview": "Selected File",
+    "clear": "Clear",
+    "download": "Download",
+    "invalidType": "Only image and PDF files are allowed!",
+    "click": "remove",
+    "noQRFound": "No QR code found"
   }
 }
