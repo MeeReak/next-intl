@@ -53,7 +53,7 @@
     "clear": "Clear",
     "download": "Download",
     "invalidType": "Only image and PDF files are allowed!",
-    "click": "remove",
+    "remove": "remove",
     "noQRFound": "No QR code found"
   }
 }
