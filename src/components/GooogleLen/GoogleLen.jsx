@@ -3,16 +3,16 @@
 import React, { useState, useRef } from "react";
 import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
-
 const QrScanner = dynamic(() => import("./QrScanner"), { ssr: false });
 
 export const GoogleLen = () => {
   const t = useTranslations("GoogleLen");
-  const scannerRef = useRef(); 
+  const scannerRef = useRef();
 
   const [files, setFiles] = useState([]);
   const [previews, setPreviews] = useState([]);
   const [qrResults, setQrResults] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const allowedTypes = [
     "image/png",
@@ -26,43 +26,62 @@ export const GoogleLen = () => {
     const validFiles = Array.from(fileList).filter((file) =>
       allowedTypes.includes(file.type)
     );
-
     if (validFiles.length !== fileList.length) {
       alert(t("invalidType"));
     }
 
-    const filePreviews = await Promise.all(
+    setIsLoading(true);
+    await new Promise((r) => requestAnimationFrame(r));
+
+    const scanResults = await Promise.allSettled(
       validFiles.map(async (file) => {
-        let previewUrl = null;
-        let qrResult = null;
-
-        if (file.type.startsWith("image/")) {
-          previewUrl = URL.createObjectURL(file);
-        }
-
-        if (scannerRef.current?.scanFile) {
-          qrResult = await scannerRef.current.scanFile(file);
-        }
-
-        setQrResults((prev) => [...prev, qrResult || null]);
-
-        return { file, previewUrl };
+        const start = performance.now();
+        const data = await scannerRef.current.scanFile(file);
+        const end = performance.now();
+        return {
+          file,
+          previewUrl: file.type.startsWith("image/")
+            ? URL.createObjectURL(file)
+            : null,
+          data
+        };
       })
     );
 
-    setFiles((prev) => [...prev, ...validFiles]);
-    setPreviews((prev) => [...prev, ...filePreviews]);
+    const newPreviews = [];
+    const newResults = [];
+
+    scanResults.forEach((res) => {
+      if (res.status === "fulfilled") {
+        newPreviews.push({
+          file: res.value.file,
+          previewUrl: res.value.previewUrl
+        });
+        newResults.push(res.value.data || null);
+      } else {
+        console.error("Scan failed:", res.reason);
+        newPreviews.push({ file: res.reason.file || null, previewUrl: null });
+        newResults.push(null);
+      }
+    });
+
+    setFiles((prev) => [...prev, ...newPreviews.map((p) => p.file)]);
+    setPreviews((prev) => [...prev, ...newPreviews]);
+    setQrResults((prev) => [...prev, ...newResults]);
+
+    console.log("TotalScanTime:", performance.now().toFixed(), "ms");
+    setIsLoading(false);
   };
 
   const handleDrop = (e) => {
     e.preventDefault();
-    const droppedFiles = e.dataTransfer.files;
-    if (droppedFiles.length > 0) handleFiles(droppedFiles);
+    const dropped = e.dataTransfer.files;
+    if (dropped.length > 0) handleFiles(dropped);
   };
 
   const handleInputChange = (e) => {
-    const selectedFiles = e.target.files;
-    if (selectedFiles && selectedFiles.length > 0) handleFiles(selectedFiles);
+    const selected = e.target.files;
+    if (selected && selected.length > 0) handleFiles(selected);
   };
 
   const resetFiles = () => {
@@ -82,8 +101,6 @@ export const GoogleLen = () => {
       aria-labelledby="google-len-title"
       className="p-6 rounded-xl shadow-md max-w-3xl mx-auto border border-gray-300 bg-white dark:bg-gray-900 dark:border-gray-700 dark:text-white font-kantumruy"
     >
-      {/* Header and Dropzone */}
-
       <header className="flex justify-between items-center mb-4">
         <h1 id="google-len-title" className="block font-semibold text-xl">
           {t("description")}
@@ -127,15 +144,47 @@ export const GoogleLen = () => {
         </label>
       </div>
 
-      {/* Preview + Results */}
+      {isLoading && (
+        <div
+          role="status"
+          aria-live="polite"
+          className="mt-4 flex items-center justify-center text-blue-600 dark:text-blue-300"
+        >
+          <svg
+            className="animate-spin mr-2 h-5 w-5 text-blue-500"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <circle
+              className="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              strokeWidth="4"
+            />
+            <path
+              className="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 00-8 8h4l-3 3-3-3h4z"
+            />
+          </svg>
+          <span className="text-sm">{t("processing") || "Processing..."}</span>
+        </div>
+      )}
+
       {previews.length > 0 && (
         <ul className="mt-6 w-full space-y-4" aria-live="polite">
-          {previews.map(({ file }, index) => (
+          {previews.map(({ file, previewUrl }, index) => (
             <li
               key={index}
               className="flex flex-col gap-2 border border-gray-300 dark:border-gray-700 rounded px-3 py-2"
               tabIndex={0}
-              aria-label={`${file.name} ${qrResults[index] ? t("qrCodeFound") : t("noQRFound")}`}
+              aria-label={`${file.name} ${
+                qrResults[index] ? t("qrCodeFound") : t("noQRFound")
+              }`}
             >
               <div className="flex items-center justify-between">
                 <div className="truncate">{file.name}</div>
@@ -167,7 +216,6 @@ export const GoogleLen = () => {
         </ul>
       )}
 
-      {/* Invisible scanner canvas */}
       <QrScanner ref={scannerRef} />
     </section>
   );

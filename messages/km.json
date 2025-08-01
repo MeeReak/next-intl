@@ -57,6 +57,7 @@
     "noQRFound": "មិនមានកូដ QR ត្រូវបានរកឃើញ",
     "qrCodeFound": "កូដ QR ត្រូវបានរកឃើញ",
     "clearFiles": "សម្អាតឯកសារ",
-    "removeFile": "លុបឯកសារ"
+    "removeFile": "លុបឯកសារ",
+    "processing": "កំពុងដំណើរការឯកសារ..."
   }
 }

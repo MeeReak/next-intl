@@ -57,6 +57,7 @@
     "noQRFound": "No QR code found",
     "qrCodeFound": "QR code found",
     "clearFiles": "Clear Files",
-    "removeFile": "Remove File"
+    "removeFile": "Remove File",
+    "processing": "Processing file(s)..."
   }
 }
