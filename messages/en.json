@@ -58,6 +58,7 @@
     "qrCodeFound": "QR code found",
     "clearFiles": "Clear Files",
     "removeFile": "Remove File",
-    "processing": "Processing file(s)..."
+    "processing": "Processing file(s)...",
+    "fileLimitExceeded": "You can only upload up to 20 files at a time!"
   }
 }

@@ -30,6 +30,11 @@ export const GoogleLen = () => {
       alert(t("invalidType"));
     }
 
+    if (validFiles.length + files.length > 20) {
+      alert(t("fileLimitExceeded"));
+      return;
+    }
+
     setIsLoading(true);
     await new Promise((r) => requestAnimationFrame(r));
 
