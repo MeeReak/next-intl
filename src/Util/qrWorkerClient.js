@@ -31,6 +31,6 @@ export function scanQRCodeInWorker(canvas) {
       height: canvas.height
     });
 
-    console.log("Scanning QR in Web Worker");
+    // console.log("Scanning QR in Web Worker");
   });
 }

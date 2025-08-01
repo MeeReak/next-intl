@@ -40,9 +40,7 @@ export const GoogleLen = () => {
 
     const scanResults = await Promise.allSettled(
       validFiles.map(async (file) => {
-        const start = performance.now();
         const data = await scannerRef.current.scanFile(file);
-        const end = performance.now();
         return {
           file,
           previewUrl: file.type.startsWith("image/")
@@ -64,7 +62,6 @@ export const GoogleLen = () => {
         });
         newResults.push(res.value.data || null);
       } else {
-        console.error("Scan failed:", res.reason);
         newPreviews.push({ file: res.reason.file || null, previewUrl: null });
         newResults.push(null);
       }
@@ -74,7 +71,7 @@ export const GoogleLen = () => {
     setPreviews((prev) => [...prev, ...newPreviews]);
     setQrResults((prev) => [...prev, ...newResults]);
 
-    console.log("TotalScanTime:", performance.now().toFixed(), "ms");
+    // console.log("TotalScanTime:", performance.now().toFixed(), "ms");
     setIsLoading(false);
   };
 
@@ -124,7 +121,7 @@ export const GoogleLen = () => {
       <div
         onDrop={handleDrop}
         onDragOver={(e) => e.preventDefault()}
-        className="w-full border-2 border-dashed border-blue-400 rounded-xl p-6 text-center bg-blue-50 hover:bg-blue-100 dark:bg-blue-950 dark:hover:bg-blue-900 transition-all cursor-pointer"
+        className="w-full border-2 border-dashed border-blue-400 rounded-xl px-6 py-16 text-center bg-blue-50 hover:bg-blue-100 dark:bg-blue-950 dark:hover:bg-blue-900 transition-all cursor-pointer"
         role="region"
         aria-describedby="drag-drop-desc"
       >

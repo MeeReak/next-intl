@@ -62,8 +62,9 @@ export default forwardRef((_, ref) => {
 
   async function renderImage(blob) {
     const image = await generateImageObject(blob);
+    const scales = getImageScale(image);
 
-    for (let scale of [1, 0.75, 0.5]) {
+    for (let scale of scales) {
       const canvas = createCanvas(image.width * scale, image.height * scale);
       const ctx = canvas.getContext("2d", { willReadFrequently: true });
       ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
@@ -86,3 +87,15 @@ export default forwardRef((_, ref) => {
 
   return null; // No visible output
 });
+
+function getImageScale(image) {
+  const maxDim = Math.max(image.width, image.height);
+
+  if (maxDim <= 500) {
+    return [2.7, 2.0, 1.5]; // Small image: upscale to help detection
+  } else if (maxDim <= 1000) {
+    return [1.0, 0.75]; // Medium image: try normal and slight downscale
+  } else {
+    return [1.0, 0.75, 0.5]; // Large image: stick to downscaling
+  }
+}
