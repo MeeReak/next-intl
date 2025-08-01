@@ -54,6 +54,9 @@
     "download": "ទាញយក",
     "invalidType": "សូមជ្រើសរើសរូបភាព ឬឯកសារ PDF ប៉ុណ្ណោះ!",
     "remove": "លុប",
-    "noQRFound": "មិនមានកូដ QR ត្រូវបានរកឃើញ"
+    "noQRFound": "មិនមានកូដ QR ត្រូវបានរកឃើញ",
+    "qrCodeFound": "កូដ QR ត្រូវបានរកឃើញ",
+    "clearFiles": "សម្អាតឯកសារ",
+    "removeFile": "លុបឯកសារ"
   }
 }

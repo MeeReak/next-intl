@@ -1,11 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useTranslations } from "next-intl";
-import { BrowserQRCodeReader } from "@zxing/browser";
+import dynamic from "next/dynamic";
+
+const QrScanner = dynamic(() => import("./QrScanner"), { ssr: false });
 
 export const GoogleLen = () => {
   const t = useTranslations("GoogleLen");
+  const scannerRef = useRef(); 
+
   const [files, setFiles] = useState([]);
   const [previews, setPreviews] = useState([]);
   const [qrResults, setQrResults] = useState([]);
@@ -34,15 +38,13 @@ export const GoogleLen = () => {
 
         if (file.type.startsWith("image/")) {
           previewUrl = URL.createObjectURL(file);
-          const img = await loadImage(previewUrl);
-          qrResult = await scanImageForQR(img);
         }
 
-        if (qrResult) {
-          setQrResults((prev) => [...prev, qrResult]);
-        } else {
-          setQrResults((prev) => [...prev, null]);
+        if (scannerRef.current?.scanFile) {
+          qrResult = await scannerRef.current.scanFile(file);
         }
+
+        setQrResults((prev) => [...prev, qrResult || null]);
 
         return { file, previewUrl };
       })
@@ -50,26 +52,6 @@ export const GoogleLen = () => {
 
     setFiles((prev) => [...prev, ...validFiles]);
     setPreviews((prev) => [...prev, ...filePreviews]);
-  };
-
-  const loadImage = (url) => {
-    return new Promise((resolve, reject) => {
-      const img = new Image();
-      img.src = url;
-      img.crossOrigin = "anonymous";
-      img.onload = () => resolve(img);
-      img.onerror = reject;
-    });
-  };
-
-  const scanImageForQR = async (img) => {
-    try {
-      const codeReader = new BrowserQRCodeReader();
-      const result = await codeReader.decodeFromImageElement(img);
-      return result?.getText() || null;
-    } catch (err) {
-      return null;
-    }
   };
 
   const handleDrop = (e) => {
@@ -100,6 +82,8 @@ export const GoogleLen = () => {
       aria-labelledby="google-len-title"
       className="p-6 rounded-xl shadow-md max-w-3xl mx-auto border border-gray-300 bg-white dark:bg-gray-900 dark:border-gray-700 dark:text-white font-kantumruy"
     >
+      {/* Header and Dropzone */}
+
       <header className="flex justify-between items-center mb-4">
         <h1 id="google-len-title" className="block font-semibold text-xl">
           {t("description")}
@@ -143,6 +127,7 @@ export const GoogleLen = () => {
         </label>
       </div>
 
+      {/* Preview + Results */}
       {previews.length > 0 && (
         <ul className="mt-6 w-full space-y-4" aria-live="polite">
           {previews.map(({ file }, index) => (
@@ -181,6 +166,9 @@ export const GoogleLen = () => {
           ))}
         </ul>
       )}
+
+      {/* Invisible scanner canvas */}
+      <QrScanner ref={scannerRef} />
     </section>
   );
 };
