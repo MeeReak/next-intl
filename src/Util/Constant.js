@@ -9,4 +9,6 @@ const CASE_TYPES = [
   { key: "inverse-underscore", label: "inverseUnderscore" }
 ];
 
-export { CASE_TYPES };
+const Photo_Base64 = "data:image/png;base64,";
+
+export { CASE_TYPES, Photo_Base64 };

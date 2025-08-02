@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { useTranslations } from "next-intl";
-import { CASE_TYPES } from "@/Util/Constant";
+import { CASE_TYPES } from "@/util/Constant";
 
 const caseTransform = (type, text) => {
   switch (type) {
@@ -66,57 +66,58 @@ export const CaseCover = () => {
   };
 
   return (
-    <div>
-      <div className="p-7 rounded shadow-md max-w-3xl mx-auto border">
-        <label htmlFor="case-textarea" className="block font-semibold mb-5">
-          {t("inputLabel")}
-        </label>
-        <textarea
-          id="case-textarea"
-          rows={5}
-          value={text}
-          onChange={handleTextareaChange}
-          className="w-full border rounded p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        ></textarea>
+    <section
+      aria-labelledby="google-len-title"
+      className="p-6 rounded-xl shadow-md max-w-3xl mx-auto border border-gray-300 bg-white dark:bg-gray-900 dark:border-gray-700 dark:text-white font-kantumruy"
+    >
+      <h1 id="google-len-title" className="block font-semibold text-xl mb-5">
+        {t("inputLabel")}
+      </h1>
+      <textarea
+        id="case-textarea"
+        rows={5}
+        value={text}
+        onChange={handleTextareaChange}
+        className="w-full border rounded p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      ></textarea>
 
-        <div className="text-sm mt-2">
-          {t("stats.character")}: {stats.character} | {t("stats.word")}:{" "}
-          {stats.word} | {t("stats.line")}: {stats.line}
-        </div>
-
-        <div className="flex flex-wrap gap-2 mt-4">
-          {CASE_TYPES.map(({ key, label }) => (
-            <button
-              key={key}
-              onClick={() => handleCaseChange(key)}
-              className="text-black border px-4 py-1 bg-gray-200 rounded-sm"
-            >
-              {t(label)}
-            </button>
-          ))}
-        </div>
-
-        <div className="flex gap-2 mt-4 flex-wrap">
-          <button
-            onClick={downloadTextFile}
-            className="text-black border px-4 py-1 bg-gray-200 rounded-sm"
-          >
-            {t("download")}
-          </button>
-          <button
-            onClick={() => navigator.clipboard.writeText(text)}
-            className="text-black border px-4 py-1 bg-gray-200 rounded-sm"
-          >
-            {t("copy")}
-          </button>
-          <button
-            onClick={() => setText("")}
-            className="text-black border px-4 py-1 bg-gray-200 rounded-sm"
-          >
-            {t("clear")}
-          </button>
-        </div>
+      <div className="text-sm mt-2">
+        {t("stats.character")}: {stats.character} | {t("stats.word")}:{" "}
+        {stats.word} | {t("stats.line")}: {stats.line}
       </div>
-    </div>
+
+      <div className="flex flex-wrap gap-2 mt-4">
+        {CASE_TYPES.map(({ key, label }) => (
+          <button
+            key={key}
+            onClick={() => handleCaseChange(key)}
+            className="text-black border px-4 py-1 bg-gray-200 rounded-sm"
+          >
+            {t(label)}
+          </button>
+        ))}
+      </div>
+
+      <div className="flex gap-2 mt-4 flex-wrap">
+        <button
+          onClick={downloadTextFile}
+          className="text-black border px-4 py-1 bg-gray-200 rounded-sm"
+        >
+          {t("download")}
+        </button>
+        <button
+          onClick={() => navigator.clipboard.writeText(text)}
+          className="text-black border px-4 py-1 bg-gray-200 rounded-sm"
+        >
+          {t("copy")}
+        </button>
+        <button
+          onClick={() => setText("")}
+          className="text-black border px-4 py-1 bg-gray-200 rounded-sm"
+        >
+          {t("clear")}
+        </button>
+      </div>
+    </section>
   );
 };

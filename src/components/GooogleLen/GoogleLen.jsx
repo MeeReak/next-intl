@@ -105,7 +105,7 @@ export const GoogleLen = () => {
     >
       <header className="flex justify-between items-center mb-4">
         <h1 id="google-len-title" className="block font-semibold text-xl">
-          {t("description")}
+          {t("inputLabel")}
         </h1>
         {files.length > 0 && (
           <button
@@ -179,42 +179,46 @@ export const GoogleLen = () => {
 
       {previews.length > 0 && (
         <ul className="mt-6 w-full space-y-4" aria-live="polite">
-          {previews.map(({ file, previewUrl }, index) => (
-            <li
-              key={index}
-              className="flex flex-col gap-2 border border-gray-300 dark:border-gray-700 rounded px-3 py-2"
-              tabIndex={0}
-              aria-label={`${file.name} ${
-                qrResults[index] ? t("qrCodeFound") : t("noQRFound")
-              }`}
-            >
-              <div className="flex items-center justify-between">
-                <div className="truncate">{file.name}</div>
-                <button
-                  onClick={() => removeFile(index)}
-                  className="text-sm px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700"
-                  aria-label={t("removeFile", { fileName: file.name })}
-                >
-                  {t("remove")}
-                </button>
-              </div>
+          {[...previews].reverse().map(({ file, previewUrl }, index) => {
+            const reversedIndex = previews.length - 1 - index;
 
-              {qrResults[index] ? (
-                <a
-                  href={qrResults[index]}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-green-600 underline break-all"
-                >
-                  {qrResults[index]}
-                </a>
-              ) : (
-                <span className="text-gray-400 italic text-sm">
-                  {t("noQRFound")}
-                </span>
-              )}
-            </li>
-          ))}
+            return (
+              <li
+                key={reversedIndex}
+                className="flex flex-col gap-2 border border-gray-300 dark:border-gray-700 rounded px-3 py-2"
+                tabIndex={0}
+                aria-label={`${file.name} ${
+                  qrResults[reversedIndex] ? t("qrCodeFound") : t("noQRFound")
+                }`}
+              >
+                <div className="flex items-center justify-between">
+                  <div className="truncate">{file.name}</div>
+                  <button
+                    onClick={() => removeFile(reversedIndex)}
+                    className="text-sm px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700"
+                    aria-label={t("removeFile", { fileName: file.name })}
+                  >
+                    {t("remove")}
+                  </button>
+                </div>
+
+                {qrResults[reversedIndex] ? (
+                  <a
+                    href={qrResults[reversedIndex]}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-green-600 underline break-all"
+                  >
+                    {qrResults[reversedIndex]}
+                  </a>
+                ) : (
+                  <span className="text-gray-400 italic text-sm">
+                    {t("noQRFound")}
+                  </span>
+                )}
+              </li>
+            );
+          })}
         </ul>
       )}
 

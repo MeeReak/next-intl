@@ -46,7 +46,8 @@
   },
   "GoogleLen": {
     "title": "Google Len",
-    "description": "Upload your image or PDF file for processing",
+    "description": "Scan and extract QR code data from images and PDFs easily.",
+    "inputLabel": "Upload your image or PDF file for processing",
     "dragLabel": "Drag your file here",
     "clickLabel": "or click to select an image/PDF",
     "preview": "Selected File",
@@ -60,5 +61,10 @@
     "removeFile": "Remove File",
     "processing": "Processing file(s)...",
     "fileLimitExceeded": "You can only upload up to 20 files at a time!"
+  },
+  "FakeFilter": {
+    "title": "Fake Filter",
+    "description": "Generate a custom JSON schema and data based on user input.",
+    "inputLabel": "Describe the data fields or structure you'd like to generate"
   }
 }

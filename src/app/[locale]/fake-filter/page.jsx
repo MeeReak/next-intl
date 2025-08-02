@@ -1,4 +1,4 @@
-import { GoogleLen } from "@/components/GooogleLen/GoogleLen";
+import { FakeFilter } from "@/components/FakeFilter/FakeFilter";
 import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 
@@ -9,39 +9,39 @@ export async function generateMetadata({ params }) {
   const isDefaultLocale = locale === "km";
 
   return {
-    title: t("GoogleLen.title"),
-    description: t("GoogleLen.description"),
+    title: t("FakeFilter.title"),
+    description: t("FakeFilter.description"),
     openGraph: {
-      title: t("GoogleLen.title"),
-      description: t("GoogleLen.description"),
+      title: t("FakeFilter.title"),
+      description: t("FakeFilter.description"),
       url: isDefaultLocale
-        ? baseUrl + "/google-len"
-        : `${baseUrl}/${locale}/google-len`,
+        ? baseUrl + "/fake-filter"
+        : `${baseUrl}/${locale}/fake-filter`,
       type: "website",
       locale: locale === "km" ? "km-KH" : "en-US",
       siteName: "Tithyareak App",
       images: [
         {
-          url: `${baseUrl}/og-image-googlelen.jpg`,
+          url: `${baseUrl}/og-image-FakeFilter.jpg`,
           width: 1200,
           height: 630,
-          alt: "Tithyareak App | GoogleLen QR Code Scanner Tool"
+          alt: "Tithyareak App | Fake Filter"
         }
       ]
     },
     twitter: {
       card: "summary_large_image",
-      title: t("GoogleLen.title"),
-      description: t("GoogleLen.description"),
-      images: [`${baseUrl}/og-image-googlelen.jpg`]
+      title: t("FakeFilter.title"),
+      description: t("FakeFilter.description"),
+      images: [`${baseUrl}/og-image-FakeFilter.jpg`]
     },
     alternates: {
       canonical: isDefaultLocale
-        ? baseUrl + "/google-len"
-        : `${baseUrl}/${locale}/google-len`,
+        ? baseUrl + "/fake-filter"
+        : `${baseUrl}/${locale}/fake-filter`,
       languages: {
-        en: `${baseUrl}/en/google-len`,
-        km: `${baseUrl}/google-len`
+        en: `${baseUrl}/en/fake-filter`,
+        km: `${baseUrl}/fake-filter`
       }
     },
     keywords: ["qr code reader", "image upload", "qr scanner", "free tool"],
@@ -53,7 +53,7 @@ export async function generateMetadata({ params }) {
 }
 
 export default function Page() {
-  const t = useTranslations("GoogleLen");
+  const t = useTranslations("FakeFilter");
 
   const schemaData = {
     "@context": "https://schema.org",
@@ -62,10 +62,10 @@ export default function Page() {
     applicationCategory: "UtilitiesApplication",
     operatingSystem: "All",
     description: t("description"),
-    url: "https://next-intl-blackmyth-wukong.vercel.app/google-len",
+    url: "https://next-intl-blackmyth-wukong.vercel.app/fake-filter",
     author: {
       "@type": "Organization",
-      name: "Tithyareak App",
+      name: "Tithyareak App"
     },
     offers: {
       "@type": "Offer",
@@ -78,7 +78,7 @@ export default function Page() {
     <>
       <main className="min-h-screen p-6">
         <h1 className="text-3xl font-bold text-center mb-4">{t("title")}</h1>
-        <GoogleLen />
+        <FakeFilter />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}

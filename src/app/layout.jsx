@@ -19,8 +19,9 @@ const kantumruyPro = Kantumruy_Pro({
 export default function RootLayout({ children }) {
   return (
     <html
+      id="hide-scrollbar"
       lang="km"
-      className={`${nunito.variable} ${kantumruyPro.variable}`}
+      className={`${nunito.variable} ${kantumruyPro.variable} `}
       suppressHydrationWarning
     >
       <head>

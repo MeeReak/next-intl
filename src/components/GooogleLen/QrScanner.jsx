@@ -2,7 +2,7 @@
 import { forwardRef, useImperativeHandle } from "react";
 import jsQR from "jsqr";
 import * as pdfjsLib from "pdfjs-dist";
-import { scanQRCodeInWorker } from "../../Util/qrWorkerClient";
+import { scanQRCodeInWorker } from "../../util/qrWorkerClient";
 
 pdfjsLib.GlobalWorkerOptions.workerSrc =
   "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js";
