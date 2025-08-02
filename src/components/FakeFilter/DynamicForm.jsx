@@ -1,9 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
+import { useTranslations } from "next-intl";
 import { Photo_Base64 } from "../../util/Constant";
 
 export const DynamicForm = () => {
+  const t = useTranslations("FakeFilter");
+
   const [recipientFields, setRecipientFields] = useState([
     { field: "", type: "string" }
   ]);
@@ -185,12 +188,12 @@ export const DynamicForm = () => {
       {/* Recipient Section */}
       <section className="p-6 border rounded-xl bg-white dark:bg-gray-900 dark:text-white">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-lg font-semibold">Recipient</h2>
+          <h2 className="text-lg font-semibold">{t("recipientTitle")}</h2>
           <button
             onClick={addRecipientField}
             className="px-3 py-1 text-sm bg-blue-600 text-white rounded hover:bg-blue-700"
           >
-            Add
+            {t("addButton")}
           </button>
         </div>
         {recipientFields.map((field, index) => (
@@ -226,7 +229,7 @@ export const DynamicForm = () => {
               onClick={() => removeRecipientField(index)}
               className="px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600"
             >
-              Remove
+              {t("removeButton")}
             </button>
           </div>
         ))}
@@ -235,12 +238,12 @@ export const DynamicForm = () => {
       {/* Certificate Section */}
       <section className="p-6 border rounded-xl bg-white dark:bg-gray-900 dark:text-white">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-lg font-semibold">Certificate</h2>
+          <h2 className="text-lg font-semibold">{t("certificateTitle")}</h2>
           <button
             onClick={addCertificateField}
             className="px-3 py-1 text-sm bg-blue-600 text-white rounded hover:bg-blue-700"
           >
-            Add
+            {t("addButton")}
           </button>
         </div>
         {certificateFields.map((field, index) => (
@@ -276,7 +279,7 @@ export const DynamicForm = () => {
               onClick={() => removeCertificateField(index)}
               className="px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600"
             >
-              Remove
+              {t("removeButton")}
             </button>
           </div>
         ))}
@@ -291,7 +294,7 @@ export const DynamicForm = () => {
               navigator.clipboard.writeText(
                 JSON.stringify(generatedSchema, null, 2)
               );
-              setCopySuccess("Schema copied!");
+              setCopySuccess(t("copySchemaSuccess"));
               setTimeout(() => setCopySuccess(""), 2000);
             }}
             disabled={!generatedSchema}
@@ -301,7 +304,7 @@ export const DynamicForm = () => {
                 : "bg-gray-400 text-gray-700 cursor-not-allowed"
             }`}
           >
-            Copy JSON
+            {t("copyJson")}
           </button>
           <button
             onClick={() => {
@@ -309,7 +312,7 @@ export const DynamicForm = () => {
               navigator.clipboard.writeText(
                 JSON.stringify(sampleData, null, 2)
               );
-              setCopySuccess("Sample data copied!");
+              setCopySuccess(t("copySampleSuccess"));
               setTimeout(() => setCopySuccess(""), 2000);
             }}
             disabled={!sampleData}
@@ -319,7 +322,7 @@ export const DynamicForm = () => {
                 : "bg-gray-400 text-gray-700 cursor-not-allowed"
             }`}
           >
-            Copy Data
+            {t("copyData")}
           </button>
 
           {/* Copy Success Message */}
@@ -339,7 +342,7 @@ export const DynamicForm = () => {
                 : "bg-green-600 text-white hover:bg-green-700"
             }`}
           >
-            Generate
+            {t("generateButton")}
           </button>
 
           <button
@@ -352,7 +355,7 @@ export const DynamicForm = () => {
             }}
             className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
           >
-            Clear
+            {t("clearButton")}
           </button>
         </div>
       </div>
@@ -361,14 +364,14 @@ export const DynamicForm = () => {
         {/* Output */}
         {generatedSchema && (
           <div className="mt-6 p-4 bg-gray-100 dark:bg-gray-800 rounded text-sm font-mono overflow-x-auto text-black dark:text-white border">
-            <h3 className="mb-2 font-semibold">Generated Schema:</h3>
+            <h3 className="mb-2 font-semibold">{t("generatedSchema")}:</h3>
             <pre>{JSON.stringify(generatedSchema, null, 2)}</pre>
           </div>
         )}
 
         {sampleData && (
           <div className="mt-6 p-4 bg-gray-50 dark:bg-gray-900 rounded text-sm font-mono overflow-x-auto text-black dark:text-white border">
-            <h3 className="mb-2 font-semibold">Sample Data:</h3>
+            <h3 className="mb-2 font-semibold">{t("sampleData")}:</h3>
             <pre>{JSON.stringify(sampleData, null, 2)}</pre>
           </div>
         )}

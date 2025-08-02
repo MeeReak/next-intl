@@ -65,6 +65,19 @@
   "FakeFilter": {
     "title": "Fake Filter",
     "description": "Generate a custom JSON schema and data based on user input.",
-    "inputLabel": "Describe the data fields or structure you'd like to generate"
+    "inputLabel": "Describe the data fields or structure you'd like to generate",
+    "recipientTitle": "Recipient",
+    "certificateTitle": "Certificate",
+    "addButton": "Add",
+    "removeButton": "Remove",
+    "fieldPlaceholder": "Field name",
+    "copyJson": "Copy JSON",
+    "copyData": "Copy Data",
+    "copySchemaSuccess": "Schema copied!",
+    "copySampleSuccess": "Sample data copied!",
+    "generateButton": "Generate",
+    "clearButton": "Clear",
+    "generatedSchema": "Generated Schema",
+    "sampleData": "Sample Data"
   }
 }

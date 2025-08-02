@@ -62,9 +62,22 @@
     "processing": "កំពុងដំណើរការឯកសារ...",
     "fileLimitExceeded": "អ្នកអាចបញ្ចូលឯកសារបានត្រឹម 20 ឯកសារតែម្តង!"
   },
-  "FakeFilter":{
+  "FakeFilter": {
     "title": "កម្មវិធីតម្រងក្លែងបន្លំ",
     "description": "បង្កើតស្គីម៉ា JSON និងទិន្នន័យដោយផ្អែកលើការបញ្ចូលរបស់អ្នក។",
-    "inputLabel": "សូមពិពណ៌នាអំពីវាលទិន្នន័យ ឬរចនាសម្ព័ន្ធដែលអ្នកចង់បង្កើត"
+    "inputLabel": "សូមពិពណ៌នាអំពីវាលទិន្នន័យ ឬរចនាសម្ព័ន្ធដែលអ្នកចង់បង្កើត",
+    "recipientTitle": "អ្នកទទួល",
+    "certificateTitle": "វិញ្ញាបនបត្រ",
+    "addButton": "បន្ថែម",
+    "removeButton": "លុប",
+    "fieldPlaceholder": "ឈ្មោះវាល",
+    "copyJson": "ចម្លង JSON",
+    "copyData": "ចម្លងទិន្នន័យ",
+    "copySchemaSuccess": "បានចម្លងស្គីម៉ា!",
+    "copySampleSuccess": "បានចម្លងទិន្នន័យគំរូ!",
+    "generateButton": "បង្កើត",
+    "clearButton": "សម្អាត",
+    "generatedSchema": "ស្គីម៉ាដែលបានបង្កើត",
+    "sampleData": "ទិន្នន័យគំរូ"
   }
 }
