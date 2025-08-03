@@ -268,6 +268,10 @@ export const DynamicForm = () => {
               <option value="string">string</option>
               <option value="age">age</option>
               <option value="Khmer age">Khmer age</option>
+              <option value="degree">Degree</option>
+              <option value="Khmer degree">Khmer Degree</option>
+              <option value="major">Major</option>
+              <option value="Khmer major">Khmer Major</option>
               <option value="PhotoBase64">PhotoBase64</option>
               <option value="Khmer lunar date">Khmer lunar date</option>
               <option value="Khmer date">Khmer date</option>
