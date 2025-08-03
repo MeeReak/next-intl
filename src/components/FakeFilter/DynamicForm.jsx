@@ -3,6 +3,18 @@
 import React, { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Photo_Base64 } from "../../util/Constant";
+import {
+  generateUUID,
+  randomString,
+  randomDate,
+  getKhmerDate,
+  randomAge,
+  getKhmerNumber,
+  randomDegree,
+  getKhmerDegree,
+  randomMajor,
+  getKhmerMajor
+} from "../../util/helper";
 
 export const DynamicForm = () => {
   const t = useTranslations("FakeFilter");
@@ -33,44 +45,12 @@ export const DynamicForm = () => {
     setCertificateFields(certificateFields.filter((_, i) => i !== index));
   };
 
-  const generateUUID = () =>
-    "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
-      const r = (Math.random() * 16) | 0,
-        v = c === "x" ? r : (r & 0x3) | 0x8;
-      return v.toString(16);
-    });
-
-  const randomString = () => {
-    const names = ["John Doe", "Jane Smith", "Alex Johnson", "Emily Brown"];
-    const khmerNames = ["ជន ដូ", "ជេន ស្មិច", "អេលិច ស៍", "អេមី ប្រោន"];
-    return {
-      en: names[Math.floor(Math.random() * names.length)],
-      km: khmerNames[Math.floor(Math.random() * khmerNames.length)]
-    };
-  };
-
-  const randomDate = () => {
-    const start = new Date(2015, 0, 1);
-    const end = new Date();
-    const date = new Date(
-      start.getTime() + Math.random() * (end.getTime() - start.getTime())
-    );
-    return date.toISOString().slice(0, 10);
-  };
-
-  const randomLastTime = () => {
-    // Example: ISO string with time and date
-    const start = new Date(2015, 0, 1);
-    const end = new Date();
-    const date = new Date(
-      start.getTime() + Math.random() * (end.getTime() - start.getTime())
-    );
-    return date.toISOString();
-  };
-
-  // We'll just stub khmer lunar and khmer date with a string indicating type (because they are complex)
+  const date = randomDate();
+  const age = randomAge();
+  const degree = randomDegree();
+  const major = randomMajor();
   const khmerLunarDateSample = "1st Waxing of Kason 2569 BE";
-  const khmerDateSample = "15 April 2569 BE";
+  const khmerDateSample = getKhmerDate(date);
 
   const generateSampleValue = (fieldName, type, rootId) => {
     if (fieldName.toLowerCase() === "id") {
@@ -81,9 +61,24 @@ export const DynamicForm = () => {
         if (fieldName.toLowerCase().includes("namekm"))
           return randomString().km;
         if (fieldName.toLowerCase().includes("name")) return randomString().en;
-        if (fieldName.toLowerCase().includes("staffno"))
-          return "S" + Math.floor(100000 + Math.random() * 900000).toString();
         return "Sample Text";
+      case "age":
+        return age;
+
+      case "Khmer age":
+        return getKhmerNumber(age);
+
+      case "degree":
+        return degree;
+
+      case "Khmer degree":
+        return getKhmerDegree(degree);
+
+      case "major":
+        return major;
+
+      case "Khmer major":
+        return getKhmerMajor(major);
 
       case "PhotoBase64":
         return Photo_Base64;
@@ -95,10 +90,7 @@ export const DynamicForm = () => {
         return khmerDateSample;
 
       case "date":
-        return randomDate();
-
-      case "last time":
-        return randomLastTime();
+        return date;
 
       default:
         return null;
@@ -219,11 +211,16 @@ export const DynamicForm = () => {
               className="w-48 p-2 border rounded"
             >
               <option value="string">string</option>
+              <option value="age">age</option>
+              <option value="Khmer age">Khmer age</option>
+              <option value="degree">Degree</option>
+              <option value="Khmer degree">Khmer Degree</option>
+              <option value="major">Major</option>
+              <option value="Khmer major">Khmer Major</option>
               <option value="PhotoBase64">PhotoBase64</option>
               <option value="Khmer lunar date">Khmer lunar date</option>
               <option value="Khmer date">Khmer date</option>
-              <option value="date">date</option>
-              <option value="last time">last time</option>
+              <option value="date">date (yyyy-mm-dd)</option>
             </select>
             <button
               onClick={() => removeRecipientField(index)}
@@ -269,11 +266,12 @@ export const DynamicForm = () => {
               className="w-48 p-2 border rounded"
             >
               <option value="string">string</option>
+              <option value="age">age</option>
+              <option value="Khmer age">Khmer age</option>
               <option value="PhotoBase64">PhotoBase64</option>
               <option value="Khmer lunar date">Khmer lunar date</option>
               <option value="Khmer date">Khmer date</option>
-              <option value="date">date</option>
-              <option value="last time">last time</option>
+              <option value="date">date (yyyy-mm-dd)</option>
             </select>
             <button
               onClick={() => removeCertificateField(index)}
@@ -363,14 +361,14 @@ export const DynamicForm = () => {
       <div className="flex justify-between">
         {/* Output */}
         {generatedSchema && (
-          <div className="mt-6 p-4 bg-gray-100 dark:bg-gray-800 rounded text-sm font-mono overflow-x-auto text-black dark:text-white border">
+          <div className="mt-6 p-4 bg-gray-100 dark:bg-gray-800 rounded text-sm font-mono overflow-x-auto text-black dark:text-white border font-kantumruy">
             <h3 className="mb-2 font-semibold">{t("generatedSchema")}:</h3>
             <pre>{JSON.stringify(generatedSchema, null, 2)}</pre>
           </div>
         )}
 
         {sampleData && (
-          <div className="mt-6 p-4 bg-gray-50 dark:bg-gray-900 rounded text-sm font-mono overflow-x-auto text-black dark:text-white border">
+          <div className="mt-6 p-4 bg-gray-50 dark:bg-gray-900 rounded text-sm font-mono overflow-x-auto text-black dark:text-white border font-kantumruy">
             <h3 className="mb-2 font-semibold">{t("sampleData")}:</h3>
             <pre>{JSON.stringify(sampleData, null, 2)}</pre>
           </div>

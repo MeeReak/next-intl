@@ -77,7 +77,7 @@
     "copySampleSuccess": "Sample data copied!",
     "generateButton": "Generate",
     "clearButton": "Clear",
-    "generatedSchema": "Generated Schema",
+    "generatedSchema": "Sample Schema",
     "sampleData": "Sample Data"
   }
 }

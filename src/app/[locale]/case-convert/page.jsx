@@ -57,7 +57,14 @@ export async function generateMetadata({ params }) {
       card: "summary_large_image",
       title: t("meta.title"),
       description: t("meta.description"),
-      images: ["/og-image.jpg"]
+      images: [
+        {
+          url: "https://profit.pakistantoday.com.pk/wp-content/uploads/2025/04/donkey-donkey-hd-free-download-world-hd-1200x630-cropped.jpg",
+          width: 1200,
+          height: 630,
+          alt: "Tithyareak App"
+        }
+      ]
     },
 
     alternates: {

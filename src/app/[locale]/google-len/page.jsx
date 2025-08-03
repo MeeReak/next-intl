@@ -22,7 +22,7 @@ export async function generateMetadata({ params }) {
       siteName: "Tithyareak App",
       images: [
         {
-          url: `${baseUrl}/og-image-googlelen.jpg`,
+          url: "https://profit.pakistantoday.com.pk/wp-content/uploads/2025/04/donkey-donkey-hd-free-download-world-hd-1200x630-cropped.jpg",
           width: 1200,
           height: 630,
           alt: "Tithyareak App | GoogleLen QR Code Scanner Tool"
@@ -33,7 +33,14 @@ export async function generateMetadata({ params }) {
       card: "summary_large_image",
       title: t("GoogleLen.title"),
       description: t("GoogleLen.description"),
-      images: [`${baseUrl}/og-image-googlelen.jpg`]
+      images: [
+        {
+          url: "https://profit.pakistantoday.com.pk/wp-content/uploads/2025/04/donkey-donkey-hd-free-download-world-hd-1200x630-cropped.jpg",
+          width: 1200,
+          height: 630,
+          alt: "Tithyareak App"
+        }
+      ]
     },
     alternates: {
       canonical: isDefaultLocale
@@ -65,7 +72,7 @@ export default function Page() {
     url: "https://next-intl-blackmyth-wukong.vercel.app/google-len",
     author: {
       "@type": "Organization",
-      name: "Tithyareak App",
+      name: "Tithyareak App"
     },
     offers: {
       "@type": "Offer",

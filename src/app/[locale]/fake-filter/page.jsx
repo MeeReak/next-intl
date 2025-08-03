@@ -22,7 +22,7 @@ export async function generateMetadata({ params }) {
       siteName: "Tithyareak App",
       images: [
         {
-          url: `${baseUrl}/og-image-FakeFilter.jpg`,
+          url: "https://profit.pakistantoday.com.pk/wp-content/uploads/2025/04/donkey-donkey-hd-free-download-world-hd-1200x630-cropped.jpg",
           width: 1200,
           height: 630,
           alt: "Tithyareak App | Fake Filter"
@@ -33,7 +33,14 @@ export async function generateMetadata({ params }) {
       card: "summary_large_image",
       title: t("FakeFilter.title"),
       description: t("FakeFilter.description"),
-      images: [`${baseUrl}/og-image-FakeFilter.jpg`]
+      images: [
+        {
+          url: "https://profit.pakistantoday.com.pk/wp-content/uploads/2025/04/donkey-donkey-hd-free-download-world-hd-1200x630-cropped.jpg",
+          width: 1200,
+          height: 630,
+          alt: "Tithyareak App"
+        }
+      ]
     },
     alternates: {
       canonical: isDefaultLocale
@@ -44,7 +51,15 @@ export async function generateMetadata({ params }) {
         km: `${baseUrl}/fake-filter`
       }
     },
-    keywords: ["qr code reader", "image upload", "qr scanner", "free tool"],
+    keywords: [
+      "fake data generator",
+      "fake certificate generator",
+      "generate sample JSON schema",
+      "free schema generator tool",
+      "JSON sample data generator",
+      "fake user data generator",
+      "certificate schema tool"
+    ],
     robots: {
       index: true,
       follow: true
