@@ -22,6 +22,44 @@ export const GoogleLen = () => {
     "application/pdf"
   ];
 
+  // async function verifyUrl(url) {
+  //   try {
+  //     const res = await fetch("/api/scrape-page", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({ url })
+  //     });
+  //     if (!res.ok) throw new Error("Network error");
+
+  //     const data = await res.json();
+  //     const text = data.content || "";
+
+  //     if (text.includes("ឃ្យូ.អ.កូដស្តង់ដាត្រឹមត្រូវ")) {
+  //       return "valid";
+  //     } else if (text.includes("ឯកសារនេះត្រូវបានផុតសុពលភាព")) {
+  //       return "expired";
+  //     } else {
+  //       return "unknown";
+  //     }
+  //   } catch {
+  //     return "error";
+  //   }
+  // }
+
+  // // Run verification for all scanned QR codes
+  // const verifyAllUrls = async (urls) => {
+  //   setIsLoading(true);
+  //   const statusMap = {};
+  //   for (const url of urls) {
+  //     statusMap[url] = "loading";
+  //     setVerificationStatus({ ...statusMap });
+  //     const status = await verifyUrl(url);
+  //     statusMap[url] = status;
+  //     setVerificationStatus({ ...statusMap });
+  //   }
+  //   setIsLoading(false);
+  // };
+
   const handleFiles = async (fileList) => {
     const validFiles = Array.from(fileList).filter((file) =>
       allowedTypes.includes(file.type)
@@ -41,12 +79,39 @@ export const GoogleLen = () => {
     const scanResults = await Promise.allSettled(
       validFiles.map(async (file) => {
         const data = await scannerRef.current.scanFile(file);
+
+        let status = "unknown";
+
+        if (data) {
+          try {
+            const res = await fetch("/api/scrape-page", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ url: data })
+            });
+
+            const result = await res.json();
+            if (res.ok && result.content) {
+              if (result.content.includes("ឯកសារនេះត្រូវបានផុតសុពលភាព")) {
+                status = "expired";
+              } else if (
+                result.content.includes("ឃ្យូ.អ.កូដស្តង់ដាត្រឹមត្រូវ")
+              ) {
+                status = "valid";
+              }
+            }
+          } catch (err) {
+            console.error("Validation failed", err);
+          }
+        }
+
         return {
           file,
           previewUrl: file.type.startsWith("image/")
             ? URL.createObjectURL(file)
             : null,
-          data
+          data,
+          status
         };
       })
     );
@@ -60,10 +125,13 @@ export const GoogleLen = () => {
           file: res.value.file,
           previewUrl: res.value.previewUrl
         });
-        newResults.push(res.value.data || null);
+        newResults.push({
+          url: res.value.data || null,
+          status: res.value.status || "unknown"
+        });
       } else {
         newPreviews.push({ file: res.reason.file || null, previewUrl: null });
-        newResults.push(null);
+        newResults.push({ url: null, status: "unknown" });
       }
     });
 
@@ -181,14 +249,25 @@ export const GoogleLen = () => {
         <ul className="mt-6 w-full space-y-4" aria-live="polite">
           {[...previews].reverse().map(({ file, previewUrl }, index) => {
             const reversedIndex = previews.length - 1 - index;
+            const { url, status } = qrResults[reversedIndex] || {};
+
+            let bgColorClass = "bg-gray-100 dark:bg-gray-800"; // default
+            if (status === "valid")
+              bgColorClass = "bg-green-100 dark:bg-green-900";
+            else if (status === "expired")
+              bgColorClass = "bg-red-100 dark:bg-red-900";
 
             return (
               <li
                 key={reversedIndex}
-                className="flex flex-col gap-2 border border-gray-300 dark:border-gray-700 rounded px-3 py-2"
+                className={`flex flex-col gap-2 border rounded px-3 py-2 border-gray-300 dark:border-gray-700 ${bgColorClass}`}
                 tabIndex={0}
                 aria-label={`${file.name} ${
-                  qrResults[reversedIndex] ? t("qrCodeFound") : t("noQRFound")
+                  url
+                    ? status === "valid"
+                      ? t("qrCodeValid")
+                      : t("qrCodeExpired")
+                    : t("noQRFound")
                 }`}
               >
                 <div className="flex items-center justify-between">
@@ -202,14 +281,14 @@ export const GoogleLen = () => {
                   </button>
                 </div>
 
-                {qrResults[reversedIndex] ? (
+                {url ? (
                   <a
-                    href={qrResults[reversedIndex]}
+                    href={url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-green-600 underline break-all"
+                    className="text-blue-700 dark:text-blue-300 underline break-all"
                   >
-                    {qrResults[reversedIndex]}
+                    {url}
                   </a>
                 ) : (
                   <span className="text-gray-400 italic text-sm">

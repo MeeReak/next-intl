@@ -35,7 +35,7 @@ export default forwardRef((_, ref) => {
 
     for (let i = 1; i <= pdf.numPages; i++) {
       const page = await pdf.getPage(i);
-      const scale = 1.5;
+      const scale = 2;
       const viewport = page.getViewport({ scale });
 
       const canvas = createCanvas(viewport.width, viewport.height);

@@ -53,49 +53,102 @@ export const DynamicForm = () => {
   const khmerDateSample = getKhmerDate(date);
 
   const generateSampleValue = (fieldName, type, rootId) => {
-    if (fieldName.toLowerCase() === "id") {
+    const field = fieldName.toLowerCase();
+
+    if (field === "id") {
       return rootId;
     }
-    switch (type) {
-      case "string":
-        if (fieldName.toLowerCase().includes("namekm"))
-          return randomString().km;
-        if (fieldName.toLowerCase().includes("name")) return randomString().en;
-        return "Sample Text";
-      case "age":
-        return age;
 
-      case "Khmer age":
-        return getKhmerNumber(age);
-
-      case "degree":
-        return degree;
-
-      case "Khmer degree":
-        return getKhmerDegree(degree);
-
-      case "major":
-        return major;
-
-      case "Khmer major":
-        return getKhmerMajor(major);
-
-      case "PhotoBase64":
-        return Photo_Base64;
-
-      case "Khmer lunar date":
-        return khmerLunarDateSample;
-
-      case "Khmer date":
-        return khmerDateSample;
-
-      case "date":
-        return date;
-
-      default:
-        return null;
+    if (field.includes("namekm")) {
+      return randomString().km;
     }
+
+    if (field.includes("name")) {
+      return randomString().en;
+    }
+
+    if (field.includes("agekm")) {
+      return getKhmerNumber(age);
+    }
+
+    if (field.includes("age")) {
+      return age;
+    }
+
+    if (field.includes("degreekm")) {
+      return getKhmerDegree(degree);
+    }
+
+    if (field.includes("degree")) {
+      return degree;
+    }
+
+    if (field.includes("majorkm") || field.endsWith("majorkm")) {
+      return getKhmerMajor(major);
+    }
+
+    if (field.includes("major")) {
+      return major;
+    }
+
+    // Photo
+    if (field.includes("photobase64")) {
+      return Photo_Base64;
+    }
+
+    if (field.includes("datekm")) {
+      return getKhmerDate(date);
+    }
+
+    if (field.includes("date")) {
+      return date;
+    }
+
+    // Default fallback
+    return "Sample Text";
   };
+
+  // const generateSampleValue = (fieldName, type, rootId) => {
+  //   if (fieldName.toLowerCase() === "id") {
+  //     return rootId;
+  //   }
+  //   switch (type) {
+  //     case "string":
+  //       return "Sample Text";
+  //     case "age":
+  //       return age;
+
+  //     case "Khmer age":
+  //       return getKhmerNumber(age);
+
+  //     case "degree":
+  //       return degree;
+
+  //     case "Khmer degree":
+  //       return getKhmerDegree(degree);
+
+  //     case "major":
+  //       return major;
+
+  //     case "Khmer major":
+  //       return getKhmerMajor(major);
+
+  //     case "PhotoBase64":
+  //       return Photo_Base64;
+
+  //     case "Khmer lunar date":
+  //       return khmerLunarDateSample;
+
+  //     case "Khmer date":
+  //       return khmerDateSample;
+
+  //     case "date":
+  //       return date;
+
+  //     default:
+  //       return null;
+  //   }
+  // };
 
   const handleGenerate = () => {
     const schema = {

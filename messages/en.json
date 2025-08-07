@@ -60,7 +60,9 @@
     "clearFiles": "Clear Files",
     "removeFile": "Remove File",
     "processing": "Processing file(s)...",
-    "fileLimitExceeded": "You can only upload up to 20 files at a time!"
+    "fileLimitExceeded": "You can only upload up to 20 files at a time!",
+    "qrCodeValid": "QR code is valid",
+    "qrCodeExpired": "This document is expired"
   },
   "FakeFilter": {
     "title": "Fake Filter",
