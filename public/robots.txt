@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://next-intl-blackmyth-wukong.vercel.app
+Host: https://next-js-intl.vercel.app
 
 # Sitemaps
-Sitemap: https://next-intl-blackmyth-wukong.vercel.app/sitemap.xml
+Sitemap: https://next-js-intl.vercel.app/sitemap.xml

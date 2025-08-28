@@ -5,7 +5,7 @@ import { getTranslations } from "next-intl/server";
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   const t = await getTranslations({ locale });
-  const baseUrl = "https://next-intl-blackmyth-wukong.vercel.app";
+  const baseUrl = "https://next-js-intl.vercel.app";
   const isDefaultLocale = locale === "km";
 
   return {
@@ -69,7 +69,7 @@ export default function Page() {
     applicationCategory: "UtilitiesApplication",
     operatingSystem: "All",
     description: t("description"),
-    url: "https://next-intl-blackmyth-wukong.vercel.app/google-len",
+    url: "https://next-js-intl.vercel.app/google-len",
     author: {
       "@type": "Organization",
       name: "Tithyareak App"

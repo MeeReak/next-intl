@@ -13,7 +13,7 @@ export async function generateMetadata({ params }) {
   const t = await getTranslations({ locale });
 
   const isDefaultLocale = locale === "km";
-  const baseUrl = "https://next-intl-blackmyth-wukong.vercel.app";
+  const baseUrl = "https://next-js-intl.vercel.app";
 
   return {
     title: t("meta.title"),

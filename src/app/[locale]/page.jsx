@@ -68,7 +68,7 @@ export default async function Home({ params }) {
   const { locale } = await params;
   const t = await getTranslations("Homepage");
 
-  const baseUrl = "https://next-intl-blackmyth-wukong.vercel.app";
+  const baseUrl = "https://next-js-intl.vercel.app";
   const url = locale === "km" ? baseUrl : `${baseUrl}/${locale}`;
 
   const schemaData = {
