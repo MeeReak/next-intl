@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { CASE_TYPES } from "../../util/Constant";
 
@@ -30,6 +30,8 @@ const caseTransform = (type, text) => {
         .join("");
     case "inverse-underscore":
       return text.toUpperCase().replace(/ /g, "_");
+    case "underscore-to-space": // NEW
+      return text.replace(/_/g, " ");
     default:
       return text;
   }
@@ -39,14 +41,21 @@ export const CaseCover = () => {
   const t = useTranslations("CaseConverter");
   const [text, setText] = useState("");
   const [originalText, setOriginalText] = useState("");
+  const historyRef = useRef([]); // stack for undo
+
+  const pushHistory = (prev) => {
+    if (prev !== undefined) historyRef.current.push(prev);
+  };
 
   const handleCaseChange = (type) => {
     setText(caseTransform(type, originalText));
   };
 
   const handleTextareaChange = (e) => {
-    setText(e.target.value);
-    setOriginalText(e.target.value);
+    const value = e.target.value;
+    pushHistory(text);
+    setText(value);
+    setOriginalText(value);
   };
 
   const downloadTextFile = () => {
@@ -65,6 +74,37 @@ export const CaseCover = () => {
     line: text.split("\n").length
   };
 
+  // Paste support with history
+  useEffect(() => {
+    const handlePaste = (e) => {
+      const pastedText = e.clipboardData.getData("text");
+      if (pastedText) {
+        pushHistory(text); // save current state before paste
+        setOriginalText(pastedText);
+        setText(pastedText);
+      }
+    };
+
+    const handleUndo = (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === "z") {
+        e.preventDefault();
+        const prev = historyRef.current.pop();
+        if (prev !== undefined) {
+          setText(prev);
+          setOriginalText(prev);
+        }
+      }
+    };
+
+    window.addEventListener("paste", handlePaste);
+    window.addEventListener("keydown", handleUndo);
+
+    return () => {
+      window.removeEventListener("paste", handlePaste);
+      window.removeEventListener("keydown", handleUndo);
+    };
+  }, [text]);
+
   return (
     <section
       aria-labelledby="google-len-title"
@@ -78,7 +118,9 @@ export const CaseCover = () => {
         rows={5}
         value={text}
         onChange={handleTextareaChange}
-        className="w-full border rounded p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        spellCheck={true}
+        className="w-full border rounded p-3 focus:outline-none focus:ring-2 focus:ring-blue-500
+             bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600"
       ></textarea>
 
       <div className="text-sm mt-2">
@@ -91,7 +133,7 @@ export const CaseCover = () => {
           <button
             key={key}
             onClick={() => handleCaseChange(key)}
-            className="text-black border px-4 py-1 bg-gray-200 rounded-sm"
+            className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white font-medium rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
           >
             {t(label)}
           </button>
@@ -101,19 +143,23 @@ export const CaseCover = () => {
       <div className="flex gap-2 mt-4 flex-wrap">
         <button
           onClick={downloadTextFile}
-          className="text-black border px-4 py-1 bg-gray-200 rounded-sm"
+          className=" px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-700 dark:bg-blue-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50"
         >
           {t("download")}
         </button>
         <button
           onClick={() => navigator.clipboard.writeText(text)}
-          className="text-black border px-4 py-1 bg-gray-200 rounded-sm"
+          className=" px-3 py-1 bg-green-500 text-white rounded hover:bg-green-700 dark:bg-green-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-50"
         >
           {t("copy")}
         </button>
         <button
-          onClick={() => setText("")}
-          className="text-black border px-4 py-1 bg-gray-200 rounded-sm"
+          onClick={() => {
+            pushHistory(text);
+            setText("");
+            setOriginalText("");
+          }}
+          className=" px-3 py-1 bg-red-500 text-white rounded hover:bg-red-700 dark:bg-red-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-50"
         >
           {t("clear")}
         </button>

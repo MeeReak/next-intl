@@ -35,6 +35,7 @@
     "titleCase": "Title Case",
     "inverse": "InVeRsE CaSe",
     "inverseUnderscore": "Inverse Underscore",
+    "underscoreToSpace": "Underscore to Space",
     "download": "Download",
     "copy": "Copy",
     "clear": "Clear",

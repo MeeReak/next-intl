@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
 const QrScanner = dynamic(() => import("./QrScanner"), { ssr: false });
@@ -8,6 +8,7 @@ const QrScanner = dynamic(() => import("./QrScanner"), { ssr: false });
 export const GoogleLen = () => {
   const t = useTranslations("GoogleLen");
   const scannerRef = useRef();
+  const pasteTimeoutRef = useRef(null);
 
   const [files, setFiles] = useState([]);
   const [previews, setPreviews] = useState([]);
@@ -97,6 +98,36 @@ export const GoogleLen = () => {
     setPreviews((prev) => prev.filter((_, i) => i !== index));
     setQrResults((prev) => prev.filter((_, i) => i !== index));
   };
+
+  useEffect(() => {
+    const handlePaste = (e) => {
+      if (pasteTimeoutRef.current) return;
+
+      const items = e.clipboardData.items;
+      const filesFromClipboard = [];
+      for (let i = 0; i < items.length; i++) {
+        const item = items[i];
+        if (item.type.indexOf("image") !== -1) {
+          const blob = item.getAsFile();
+          if (blob) filesFromClipboard.push(blob);
+        }
+      }
+
+      if (filesFromClipboard.length > 0) {
+        handleFiles(filesFromClipboard);
+
+        pasteTimeoutRef.current = setTimeout(() => {
+          pasteTimeoutRef.current = null;
+        }, 1000);
+      }
+    };
+
+    window.addEventListener("paste", handlePaste);
+    return () => {
+      window.removeEventListener("paste", handlePaste);
+      if (pasteTimeoutRef.current) clearTimeout(pasteTimeoutRef.current);
+    };
+  }, []);
 
   return (
     <section

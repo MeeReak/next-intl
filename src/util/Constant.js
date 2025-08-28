@@ -6,7 +6,11 @@ const CASE_TYPES = [
   { key: "title", label: "titleCase" },
   { key: "alternating", label: "alternating" },
   { key: "inverse", label: "inverse" },
-  { key: "inverse-underscore", label: "inverseUnderscore" }
+  { key: "inverse-underscore", label: "inverseUnderscore" },
+  {
+    key: "underscore-to-space",
+    label: "underscoreToSpace"
+  }
 ];
 
 const Photo_Base64 = "data:image/png;base64,";
