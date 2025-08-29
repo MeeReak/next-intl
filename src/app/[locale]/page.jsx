@@ -9,13 +9,13 @@ export async function generateMetadata({ params }) {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
   const url = locale === "km" ? baseUrl : `${baseUrl}/${locale}`;
 
-  const supportedLocales = ["en", "km"];
-  const languageAlternates = Object.fromEntries(
-    supportedLocales.map((loc) => [
-      loc,
-      loc === "km" ? baseUrl : `${baseUrl}/${loc}`
-    ])
-  );
+  // const supportedLocales = ["en", "km"];
+  // const languageAlternates = Object.fromEntries(
+  //   supportedLocales.map((loc) => [
+  //     loc,
+  //     loc === "km" ? baseUrl : `${baseUrl}/${loc}`
+  //   ])
+  // );
 
   return {
     title: t("title"),
@@ -25,6 +25,7 @@ export async function generateMetadata({ params }) {
       title: t("title"),
       description: t("description"),
       url,
+      type: "website",
       siteName: "Tithyareak App",
       locale: locale === "km" ? "km-KH" : "en-US",
       images: [
@@ -52,8 +53,8 @@ export async function generateMetadata({ params }) {
     alternates: {
       canonical: url,
       languages: {
-        ...languageAlternates,
-        "x-default": baseUrl
+        en: `${baseUrl}/en/google-len`,
+        km: `${baseUrl}/google-len`
       }
     },
     keywords: [t("title"), t("description"), "Tithyareak App", "Useful Tool"],
