@@ -139,17 +139,29 @@ export const CaseCover = () => {
           </button>
         ))}
       </div>
-
+      <button
+        onClick={() => {
+          const blob = new Blob([text], { type: "text/plain" });
+          const link = document.createElement("a");
+          link.href = URL.createObjectURL(blob);
+          link.download = "text.txt";
+          link.click();
+          URL.revokeObjectURL(link.href);
+        }}
+        disabled={text.length === 0}
+        className={`px-3 py-1 bg-green-500 text-white rounded hover:bg-green-700 dark:bg-green-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-50 
+      ${text.length === 0 ? "cursor-not-allowed opacity-50" : "cursor-pointer"}`}
+      >
+        {t("download")}
+      </button>
       <div className="flex gap-2 mt-4 flex-wrap">
         <button
-          onClick={downloadTextFile}
-          className=" px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-700 dark:bg-blue-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50"
-        >
-          {t("download")}
-        </button>
-        <button
-          onClick={() => navigator.clipboard.writeText(text)}
-          className=" px-3 py-1 bg-green-500 text-white rounded hover:bg-green-700 dark:bg-green-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-50"
+          onClick={() => {
+            navigator.clipboard.writeText(text);
+          }}
+          disabled={text.length === 0}
+          className={`px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-700 dark:bg-blue-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 
+      ${text.length === 0 ? "cursor-not-allowed opacity-50" : "cursor-pointer"}`}
         >
           {t("copy")}
         </button>
@@ -159,7 +171,9 @@ export const CaseCover = () => {
             setText("");
             setOriginalText("");
           }}
-          className=" px-3 py-1 bg-red-500 text-white rounded hover:bg-red-700 dark:bg-red-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-50"
+          disabled={text.length === 0}
+          className={`px-3 py-1 bg-red-500 text-white rounded hover:bg-red-700 dark:bg-red-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-50 
+    ${text.length === 0 ? "cursor-not-allowed opacity-50" : "cursor-pointer"}`}
         >
           {t("clear")}
         </button>

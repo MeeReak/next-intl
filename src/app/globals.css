@@ -46,7 +46,7 @@ body {
 
 /* Dark theme using the 'dark' class on <html> */
 html.dark body {
-  background-color: #111827;
+  background-color: #10172a;
   color: #f9fafb;
 }
 
