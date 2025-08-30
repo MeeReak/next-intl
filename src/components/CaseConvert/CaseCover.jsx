@@ -108,9 +108,12 @@ export const CaseCover = () => {
   return (
     <section
       aria-labelledby="google-len-title"
-      className="p-6 rounded-xl shadow-md max-w-3xl mx-auto border border-gray-300 bg-white dark:bg-gray-900 dark:border-gray-700 dark:text-white font-kantumruy"
+      className="p-6 rounded-xl shadow-md max-w-3xl mx-auto border border-gray-300 bg-white dark:border-gray-700 dark:text-white font-kantumruy"
     >
-      <h1 id="google-len-title" className="block font-semibold text-xl mb-5">
+      <h1
+        id="google-len-title"
+        className="block font-semibold text-xl mb-5 text-black"
+      >
         {t("inputLabel")}
       </h1>
       <textarea
@@ -123,7 +126,7 @@ export const CaseCover = () => {
              bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600"
       ></textarea>
 
-      <div className="text-sm mt-2">
+      <div className="text-sm mt-2 text-black">
         {t("stats.character")}: {stats.character} | {t("stats.word")}:{" "}
         {stats.word} | {t("stats.line")}: {stats.line}
       </div>
@@ -139,29 +142,30 @@ export const CaseCover = () => {
           </button>
         ))}
       </div>
-      <button
-        onClick={() => {
-          const blob = new Blob([text], { type: "text/plain" });
-          const link = document.createElement("a");
-          link.href = URL.createObjectURL(blob);
-          link.download = "text.txt";
-          link.click();
-          URL.revokeObjectURL(link.href);
-        }}
-        disabled={text.length === 0}
-        className={`px-3 py-1 bg-green-500 text-white rounded hover:bg-green-700 dark:bg-green-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-50 
-      ${text.length === 0 ? "cursor-not-allowed opacity-50" : "cursor-pointer"}`}
-      >
-        {t("download")}
-      </button>
-      <div className="flex gap-2 mt-4 flex-wrap">
+
+      <div className="flex gap-2 mt-4 flex-wrap ">
+        <button
+          onClick={() => {
+            const blob = new Blob([text], { type: "text/plain" });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "text.txt";
+            link.click();
+            URL.revokeObjectURL(link.href);
+          }}
+          disabled={text.length === 0}
+          className={`px-3 py-1 bg-green-500 text-white rounded dark:bg-green-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-50 
+      ${text.length === 0 ? "cursor-not-allowed opacity-50" : "hover:bg-green-700 cursor-pointer"}`}
+        >
+          {t("download")}
+        </button>
         <button
           onClick={() => {
             navigator.clipboard.writeText(text);
           }}
           disabled={text.length === 0}
-          className={`px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-700 dark:bg-blue-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 
-      ${text.length === 0 ? "cursor-not-allowed opacity-50" : "cursor-pointer"}`}
+          className={`px-3 py-1 bg-blue-500 text-white rounded dark:bg-blue-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 
+      ${text.length === 0 ? "cursor-not-allowed opacity-50" : "hover:bg-blue-700 cursor-pointer"}`}
         >
           {t("copy")}
         </button>
@@ -172,8 +176,8 @@ export const CaseCover = () => {
             setOriginalText("");
           }}
           disabled={text.length === 0}
-          className={`px-3 py-1 bg-red-500 text-white rounded hover:bg-red-700 dark:bg-red-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-50 
-    ${text.length === 0 ? "cursor-not-allowed opacity-50" : "cursor-pointer"}`}
+          className={`px-3 py-1 bg-red-500 text-white rounded dark:bg-red-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-50 
+    ${text.length === 0 ? "cursor-not-allowed opacity-50" : "hover:bg-red-700 cursor-pointer"}`}
         >
           {t("clear")}
         </button>

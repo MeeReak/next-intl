@@ -1,11 +1,14 @@
 "use client";
 import { forwardRef, useImperativeHandle } from "react";
 import jsQR from "jsqr";
-import * as pdfjsLib from "pdfjs-dist";
+import { getDocument, GlobalWorkerOptions } from "pdfjs-dist";
 import { scanQRCodeInWorker } from "../../util/qrWorkerClient";
 
-pdfjsLib.GlobalWorkerOptions.workerSrc =
-  "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js";
+// Set up pdf.js worker using modern ESM import
+GlobalWorkerOptions.workerSrc = new URL(
+  "pdfjs-dist/build/pdf.worker.min.mjs",
+  import.meta.url
+).toString();
 
 export default forwardRef((_, ref) => {
   useImperativeHandle(ref, () => ({
@@ -14,7 +17,7 @@ export default forwardRef((_, ref) => {
 
       if (fileHandle.type === "application/pdf") {
         const pdfTypedArray = new Uint8Array(await uploadedFile.arrayBuffer());
-        const loadedPDF = await pdfjsLib.getDocument(pdfTypedArray).promise;
+        const loadedPDF = await getDocument({ data: pdfTypedArray }).promise;
         return await renderPDF(loadedPDF);
       } else {
         const imageBlob = await uploadedFile.blob();
@@ -41,8 +44,7 @@ export default forwardRef((_, ref) => {
       const canvas = createCanvas(viewport.width, viewport.height);
       const ctx = canvas.getContext("2d", { willReadFrequently: true });
 
-      const renderContext = { canvasContext: ctx, viewport };
-      await page.render(renderContext).promise;
+      await page.render({ canvasContext: ctx, viewport }).promise;
 
       qrResult = await scanQRCodeInWorker(canvas);
       if (qrResult) return qrResult;
