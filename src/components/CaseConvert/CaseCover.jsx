@@ -32,9 +32,9 @@ const caseTransform = (type, text) => {
       return text.toUpperCase().replace(/ /g, "_");
     case "no-symbol":
       return text
-        .replace(/[^a-zA-Z0-9]+/g, " ")  
-        .replace(/\s+/g, " ")  
-        .trim();  
+        .replace(/[^a-zA-Z0-9]+/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
     default:
       return text;
   }
@@ -139,11 +139,11 @@ export const CaseCover = () => {
   return (
     <section
       aria-labelledby="google-len-title"
-      className="p-6 rounded-xl shadow-md max-w-3xl mx-auto border border-gray-300 dark:bg-white bg-[#121826] dark:border-gray-700 dark:text-white font-kantumruy"
+      className="p-6 rounded-xl shadow-md max-w-3xl mx-auto border border-gray-300 bg-white dark:bg-[#121826] dark:border-gray-700 dark:text-white font-kantumruy"
     >
       <h1
         id="google-len-title"
-        className="block font-semibold text-xl mb-5 dark:text-black text-white"
+        className="block font-semibold text-xl mb-5 text-black dark:text-white"
       >
         {t("inputLabel")}
       </h1>
@@ -161,7 +161,7 @@ export const CaseCover = () => {
              bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600"
       />
 
-      <div className="text-sm mt-2 dark:text-black text-white">
+      <div className="text-sm mt-2 text-black dark:text-white">
         {t("stats.character")}: {stats.character} | {t("stats.word")}:{" "}
         {stats.word} | {t("stats.line")}: {stats.line}
       </div>
@@ -171,7 +171,7 @@ export const CaseCover = () => {
           <button
             key={key}
             onClick={() => handleCaseChange(key)}
-            className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white font-medium rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+            className="px-4 py-2 shadow-md border dark:border-gray-600 dark:bg-gray-900 dark:text-white text-black font-medium rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
           >
             {t(label)}
           </button>

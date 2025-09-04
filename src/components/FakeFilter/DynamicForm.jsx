@@ -133,13 +133,13 @@ export const DynamicForm = () => {
 
     recipientFields.forEach((f) => {
       if (f.field) {
-        schema.properties.recipient.properties[f.field] = { type: f.type };
+        schema.properties.recipient.properties[f.field] = { type: "string" };
       }
     });
 
     certificateFields.forEach((f) => {
       if (f.field) {
-        schema.properties.certificate.properties[f.field] = { type: f.type };
+        schema.properties.certificate.properties[f.field] = { type: "string" };
       }
     });
 
@@ -157,20 +157,16 @@ export const DynamicForm = () => {
 
     recipientFields.forEach((f) => {
       if (f.field) {
-        sample.recipient[f.field] = generateSampleValue(
-          f.field,
-          f.type,
-          rootId
+        sample.recipient[f.field] = String(
+          generateSampleValue(f.field, f.type, rootId)
         );
       }
     });
 
     certificateFields.forEach((f) => {
       if (f.field) {
-        sample.certificate[f.field] = generateSampleValue(
-          f.field,
-          f.type,
-          rootId
+        sample.certificate[f.field] = String(
+          generateSampleValue(f.field, f.type, rootId)
         );
       }
     });
@@ -186,7 +182,7 @@ export const DynamicForm = () => {
   return (
     <div className="space-y-6">
       {/* Recipient Section */}
-      <section className="p-6 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-[#121826] dark:text-white">
+      <section className="p-6 shadow-sm border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-[#121826] dark:text-white">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-lg">{t("recipientTitle")}</h2>
           <button
@@ -207,7 +203,7 @@ export const DynamicForm = () => {
                 updated[index].field = e.target.value;
                 setRecipientFields(updated);
               }}
-              className="flex-1 p-2 border rounded"
+              className="flex-1 px-2 py-1 border rounded dark:bg-gray-900 dark:text-white dark:border-gray-700"
             />
             <select
               value={field.type}
@@ -216,7 +212,7 @@ export const DynamicForm = () => {
                 updated[index].type = e.target.value;
                 setRecipientFields(updated);
               }}
-              className="w-48 p-2 border rounded"
+              className="w-48 px-2 py-[6px] border rounded dark:bg-gray-900 dark:text-white dark:border-gray-700"
             >
               <option value="string">string</option>
               <option value="age">age</option>
@@ -242,7 +238,7 @@ export const DynamicForm = () => {
       </section>
 
       {/* Certificate Section */}
-      <section className="p-6 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-900 dark:text-white">
+      <section className="p-6 shadow-sm border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-900 dark:text-white">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-lg ">{t("certificateTitle")}</h2>
           <button
@@ -263,7 +259,7 @@ export const DynamicForm = () => {
                 updated[index].field = e.target.value;
                 setCertificateFields(updated);
               }}
-              className="flex-1 p-2 border rounded"
+              className="flex-1 px-2 py-1  border rounded dark:bg-gray-900 dark:text-white dark:border-gray-700"
             />
             <select
               value={field.type}
@@ -272,7 +268,7 @@ export const DynamicForm = () => {
                 updated[index].type = e.target.value;
                 setCertificateFields(updated);
               }}
-              className="w-48 p-2 border rounded"
+              className="w-48 px-2 py-[6px] border rounded dark:bg-gray-900 dark:text-white dark:border-gray-700"
             >
               <option value="string">string</option>
               <option value="age">age</option>
@@ -310,10 +306,10 @@ export const DynamicForm = () => {
               setTimeout(() => setCopySuccess(""), 2000);
             }}
             disabled={!generatedSchema}
-            className={`px-3 py-1 rounded ${
+            className={`px-3 py-1 rounded bg-blue-600 text-white ${
               generatedSchema
-                ? "bg-blue-600 text-white hover:bg-blue-700"
-                : "bg-gray-400 text-gray-700 cursor-not-allowed"
+                ? "hover:bg-blue-700 cursor-pointer"
+                : "cursor-not-allowed opacity-50"
             }`}
           >
             {t("copyJson")}
@@ -328,10 +324,10 @@ export const DynamicForm = () => {
               setTimeout(() => setCopySuccess(""), 2000);
             }}
             disabled={!sampleData}
-            className={`px-3 py-1 rounded ${
+            className={`px-3 py-1 rounded bg-indigo-600 text-white ${
               sampleData
-                ? "bg-indigo-600 text-white hover:bg-indigo-700"
-                : "bg-gray-400 text-gray-700 cursor-not-allowed"
+                ? "hover:bg-indigo-700 cursor-pointer"
+                : "cursor-not-allowed opacity-50"
             }`}
           >
             {t("copyData")}
@@ -339,7 +335,7 @@ export const DynamicForm = () => {
 
           {/* Copy Success Message */}
           {copySuccess && (
-            <div className="mt-2 text-sm text-green-600 dark:text-green-400">
+            <div className="mt-2 text-sm text-green-600 dark:text-green-400 ">
               {copySuccess}
             </div>
           )}
@@ -348,10 +344,10 @@ export const DynamicForm = () => {
           <button
             onClick={handleGenerate}
             disabled={hasEmptyFields}
-            className={`px-3 py-1 rounded ${
+            className={`px-3 py-1 rounded bg-green-600 text-white ${
               hasEmptyFields
-                ? "bg-gray-400 text-gray-700 cursor-not-allowed"
-                : "bg-green-600 text-white hover:bg-green-700"
+                ? "cursor-not-allowed opacity-50"
+                : "hover:bg-green-700 cursor-pointer"
             }`}
           >
             {t("generateButton")}
@@ -365,7 +361,11 @@ export const DynamicForm = () => {
               setSampleData(null);
               setCopySuccess("");
             }}
-            className="px-4 py-1 bg-red-600 text-white rounded hover:bg-red-700"
+            className={`px-3 py-1 rounded bg-red-600 text-white ${
+              hasEmptyFields
+                ? "cursor-not-allowed opacity-50"
+                : "hover:bg-red-700 cursor-pointer"
+            }`}
           >
             {t("clearButton")}
           </button>
