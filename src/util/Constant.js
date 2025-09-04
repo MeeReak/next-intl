@@ -8,8 +8,8 @@ const CASE_TYPES = [
   { key: "inverse", label: "inverse" },
   { key: "inverse-underscore", label: "inverseUnderscore" },
   {
-    key: "underscore-to-space",
-    label: "underscoreToSpace"
+    key: "no-symbol",
+    label: "noSymbol"
   }
 ];
 
