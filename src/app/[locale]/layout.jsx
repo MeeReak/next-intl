@@ -43,6 +43,8 @@ export async function generateMetadata({ params }) {
       ]
     },
 
+    manifest: "/site.webmanifest",
+
     openGraph: {
       title: t("meta.title"),
       description: t("meta.description"),
@@ -58,13 +60,6 @@ export async function generateMetadata({ params }) {
       ],
       siteName: "Tithyareak App By Anonymous",
       locale: locale === "km" ? "km-KH" : "en-US"
-    },
-    alternates: {
-      canonical: isDefaultLocale ? baseUrl : `${baseUrl}/${locale}`,
-      languages: {
-        en: `${baseUrl}/en`,
-        km: baseUrl
-      }
     },
 
     twitter: {
