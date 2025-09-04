@@ -68,10 +68,12 @@ export async function generateMetadata({ params }) {
     },
 
     alternates: {
-      canonical: isDefaultLocale ? baseUrl : `${baseUrl}/${locale}`,
+      canonical: isDefaultLocale
+        ? baseUrl + "/case-convert"
+        : `${baseUrl}/${locale}/case-convert`,
       languages: {
-        en: `${baseUrl}/en`,
-        km: `${baseUrl}`
+        en: `${baseUrl}/en/case-convert`,
+        km: `${baseUrl}/case-convert`
       }
     },
 
@@ -104,7 +106,7 @@ export default function Home() {
     url: "https://next-js-intl.vercel.app/case-converter", // optionally append locale here
     author: {
       "@type": "Organization",
-      name: "Your Company Name"
+      name: "Tithyareak App"
     },
     offers: {
       "@type": "Offer",

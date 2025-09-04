@@ -18,11 +18,6 @@
     "description": "Sorry, we couldn't find that page.",
     "back": "Click here to go back to the homepage"
   },
-  "Language": {
-    "title": "Languages page",
-    "description": "This page allows you to switch languages.",
-    "excerpt": "Explore our language learning tools and tips for every level."
-  },
   "CaseConverter": {
     "title": "Case Converter",
     "description": "Convert text to various case formats easily.",
