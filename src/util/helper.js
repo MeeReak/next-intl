@@ -92,11 +92,23 @@ const getKhmerNumber = (num) => {
 
 const getKhmerDate = (string) => {
   const date = new Date(string);
+  let day = date.getDate();
+  if (day.toString().length < 2) {
+    day = `0${day}`;
+  }
+  const month = date.toLocaleString("default", { month: "long" });
+  const year = date.getFullYear();
+
+  return `រាជធានីភ្នំពេញ ថ្ងៃទី${getKhmerNumber(day)} ខែ${khMonthInWeek[month]} ឆ្នាំ${getKhmerNumber(year)}`;
+};
+
+const getDate = (string) => {
+  const date = new Date(string);
   const day = date.getDate();
   const month = date.toLocaleString("default", { month: "long" });
   const year = date.getFullYear();
 
-  return `ថ្ងៃទី${getKhmerNumber(day)} ខែ${khMonthInWeek[month]} ឆ្នាំ${getKhmerNumber(year)}`;
+  return `Phnom Penh, ${month} ${day}, ${year}`;
 };
 
 export {
@@ -110,5 +122,6 @@ export {
   randomDegree,
   getKhmerDegree,
   randomMajor,
-  getKhmerMajor
+  getKhmerMajor,
+  getDate
 };

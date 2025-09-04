@@ -13,7 +13,8 @@ import {
   randomDegree,
   getKhmerDegree,
   randomMajor,
-  getKhmerMajor
+  getKhmerMajor,
+  getDate
 } from "../../util/helper";
 
 export const DynamicForm = () => {
@@ -51,6 +52,7 @@ export const DynamicForm = () => {
   const major = randomMajor();
   const khmerLunarDateSample = "1st Waxing of Kason 2569 BE";
   const khmerDateSample = getKhmerDate(date);
+  const DateSample = getDate(date);
 
   const generateSampleValue = (fieldName, type, rootId) => {
     if (fieldName.toLowerCase() === "id") {
@@ -90,6 +92,9 @@ export const DynamicForm = () => {
         return khmerDateSample;
 
       case "date":
+        return DateSample;
+
+      case "date(yyyy-mm-dd)":
         return date;
 
       default:
@@ -112,12 +117,15 @@ export const DynamicForm = () => {
           type: "object",
           required: [
             "institution",
-            "institutionKm",
+            "institution_km",
             ...certificateFields.map((f) => f.field).filter(Boolean)
           ],
           properties: {
-            institution: { type: "string" },
-            institutionKm: { type: "string" }
+            institution: {
+              type: "string",
+              enum: ["Harverd School"]
+            },
+            institution_km: { type: "string", enum: ["Harverd School"] }
           }
         }
       }
@@ -143,7 +151,7 @@ export const DynamicForm = () => {
       recipient: {},
       certificate: {
         institution: "Harverd School",
-        institutionKm: "Harverd School"
+        institution_km: "Harverd School"
       }
     };
 
@@ -178,9 +186,9 @@ export const DynamicForm = () => {
   return (
     <div className="space-y-6">
       {/* Recipient Section */}
-      <section className="p-6 border rounded-xl bg-white dark:bg-gray-900 dark:text-white">
+      <section className="p-6 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-[#121826] dark:text-white">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-lg font-semibold">{t("recipientTitle")}</h2>
+          <h2 className="text-lg">{t("recipientTitle")}</h2>
           <button
             onClick={addRecipientField}
             className="px-3 py-1 text-sm bg-blue-600 text-white rounded hover:bg-blue-700"
@@ -220,11 +228,12 @@ export const DynamicForm = () => {
               <option value="PhotoBase64">PhotoBase64</option>
               <option value="Khmer lunar date">Khmer lunar date</option>
               <option value="Khmer date">Khmer date</option>
-              <option value="date">date (yyyy-mm-dd)</option>
+              <option value="date">Full date</option>
+              <option value="date(yyyy-mm-dd)">date (yyyy-mm-dd)</option>
             </select>
             <button
               onClick={() => removeRecipientField(index)}
-              className="px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600"
+              className="px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700"
             >
               {t("removeButton")}
             </button>
@@ -233,9 +242,9 @@ export const DynamicForm = () => {
       </section>
 
       {/* Certificate Section */}
-      <section className="p-6 border rounded-xl bg-white dark:bg-gray-900 dark:text-white">
+      <section className="p-6 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-900 dark:text-white">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-lg font-semibold">{t("certificateTitle")}</h2>
+          <h2 className="text-lg ">{t("certificateTitle")}</h2>
           <button
             onClick={addCertificateField}
             className="px-3 py-1 text-sm bg-blue-600 text-white rounded hover:bg-blue-700"
@@ -275,11 +284,12 @@ export const DynamicForm = () => {
               <option value="PhotoBase64">PhotoBase64</option>
               <option value="Khmer lunar date">Khmer lunar date</option>
               <option value="Khmer date">Khmer date</option>
-              <option value="date">date (yyyy-mm-dd)</option>
+              <option value="date">Full date</option>
+              <option value="date(yyyy-mm-dd)">date (yyyy-mm-dd)</option>
             </select>
             <button
               onClick={() => removeCertificateField(index)}
-              className="px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600"
+              className="px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700"
             >
               {t("removeButton")}
             </button>
@@ -300,7 +310,7 @@ export const DynamicForm = () => {
               setTimeout(() => setCopySuccess(""), 2000);
             }}
             disabled={!generatedSchema}
-            className={`px-4 py-2 rounded ${
+            className={`px-3 py-1 rounded ${
               generatedSchema
                 ? "bg-blue-600 text-white hover:bg-blue-700"
                 : "bg-gray-400 text-gray-700 cursor-not-allowed"
@@ -318,7 +328,7 @@ export const DynamicForm = () => {
               setTimeout(() => setCopySuccess(""), 2000);
             }}
             disabled={!sampleData}
-            className={`px-4 py-2 rounded ${
+            className={`px-3 py-1 rounded ${
               sampleData
                 ? "bg-indigo-600 text-white hover:bg-indigo-700"
                 : "bg-gray-400 text-gray-700 cursor-not-allowed"
@@ -338,7 +348,7 @@ export const DynamicForm = () => {
           <button
             onClick={handleGenerate}
             disabled={hasEmptyFields}
-            className={`px-4 py-2 rounded ${
+            className={`px-3 py-1 rounded ${
               hasEmptyFields
                 ? "bg-gray-400 text-gray-700 cursor-not-allowed"
                 : "bg-green-600 text-white hover:bg-green-700"
@@ -355,7 +365,7 @@ export const DynamicForm = () => {
               setSampleData(null);
               setCopySuccess("");
             }}
-            className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+            className="px-4 py-1 bg-red-600 text-white rounded hover:bg-red-700"
           >
             {t("clearButton")}
           </button>
@@ -365,14 +375,14 @@ export const DynamicForm = () => {
       <div className="flex justify-between">
         {/* Output */}
         {generatedSchema && (
-          <div className="mt-6 p-4 bg-gray-100 dark:bg-gray-800 rounded text-sm font-mono overflow-x-auto text-black dark:text-white border font-kantumruy">
+          <div className="mt-2 p-4 bg-gray-100 dark:bg-gray-900 rounded text-sm font-mono overflow-x-auto text-black dark:text-white border border-gray-300 dark:border-gray-700 font-kantumruy">
             <h3 className="mb-2 font-semibold">{t("generatedSchema")}:</h3>
             <pre>{JSON.stringify(generatedSchema, null, 2)}</pre>
           </div>
         )}
 
         {sampleData && (
-          <div className="mt-6 p-4 bg-gray-50 dark:bg-gray-900 rounded text-sm font-mono overflow-x-auto text-black dark:text-white border font-kantumruy">
+          <div className="mt-2 p-4 bg-gray-50 dark:bg-gray-900 rounded text-sm font-mono overflow-x-auto text-black dark:text-white border border-gray-300 dark:border-gray-700 font-kantumruy">
             <h3 className="mb-2 font-semibold">{t("sampleData")}:</h3>
             <pre>{JSON.stringify(sampleData, null, 2)}</pre>
           </div>

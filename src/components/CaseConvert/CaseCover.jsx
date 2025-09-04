@@ -139,11 +139,11 @@ export const CaseCover = () => {
   return (
     <section
       aria-labelledby="google-len-title"
-      className="p-6 rounded-xl shadow-md max-w-3xl mx-auto border border-gray-300 bg-white dark:border-gray-700 dark:text-white font-kantumruy"
+      className="p-6 rounded-xl shadow-md max-w-3xl mx-auto border border-gray-300 dark:bg-white bg-[#121826] dark:border-gray-700 dark:text-white font-kantumruy"
     >
       <h1
         id="google-len-title"
-        className="block font-semibold text-xl mb-5 text-black"
+        className="block font-semibold text-xl mb-5 dark:text-black text-white"
       >
         {t("inputLabel")}
       </h1>
@@ -161,7 +161,7 @@ export const CaseCover = () => {
              bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600"
       />
 
-      <div className="text-sm mt-2 text-black">
+      <div className="text-sm mt-2 dark:text-black text-white">
         {t("stats.character")}: {stats.character} | {t("stats.word")}:{" "}
         {stats.word} | {t("stats.line")}: {stats.line}
       </div>
