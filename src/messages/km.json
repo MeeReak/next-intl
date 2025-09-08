@@ -75,5 +75,9 @@
     "clearButton": "សម្អាត",
     "generatedSchema": "ស្គីម៉ាគំរូ",
     "sampleData": "ទិន្នន័យគំរូ"
+  },
+  "LunarDate": {
+    "title": "Lunar Date",
+    "description": "Convert date into Khmer Lunar date"
   }
 }

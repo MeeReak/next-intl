@@ -64,8 +64,8 @@
     "inputLabel": "Describe the data fields or structure you'd like to generate",
     "recipientTitle": "Recipient",
     "certificateTitle": "Certificate",
-    "addButton": "Add",
-    "removeButton": "Remove",
+    "addButton": "add",
+    "removeButton": "remove",
     "fieldPlaceholder": "Field name",
     "copyJson": "Copy JSON",
     "copyData": "Copy Data",
@@ -75,5 +75,9 @@
     "clearButton": "Clear",
     "generatedSchema": "Sample Schema",
     "sampleData": "Sample Data"
+  },
+  "LunarDate": {
+    "title": "Lunar Date",
+    "description": "Convert date into Khmer Lunar date"
   }
 }

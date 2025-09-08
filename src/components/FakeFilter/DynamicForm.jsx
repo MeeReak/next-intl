@@ -187,7 +187,7 @@ export const DynamicForm = () => {
           <h2 className="text-lg">{t("recipientTitle")}</h2>
           <button
             onClick={addRecipientField}
-            className="px-3 py-1 text-sm bg-blue-600 text-white rounded hover:bg-blue-700"
+            className="px-3 py-1 shadow-md text-sm bg-blue-600 text-white rounded hover:bg-blue-700"
           >
             {t("addButton")}
           </button>
@@ -229,7 +229,7 @@ export const DynamicForm = () => {
             </select>
             <button
               onClick={() => removeRecipientField(index)}
-              className="px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700"
+              className="px-3 py-1 shadow-md bg-red-600 text-white rounded hover:bg-red-700"
             >
               {t("removeButton")}
             </button>
@@ -243,7 +243,7 @@ export const DynamicForm = () => {
           <h2 className="text-lg ">{t("certificateTitle")}</h2>
           <button
             onClick={addCertificateField}
-            className="px-3 py-1 text-sm bg-blue-600 text-white rounded hover:bg-blue-700"
+            className="px-3 py-1 shadow-md text-sm bg-blue-600 text-white rounded hover:bg-blue-700"
           >
             {t("addButton")}
           </button>
@@ -285,7 +285,7 @@ export const DynamicForm = () => {
             </select>
             <button
               onClick={() => removeCertificateField(index)}
-              className="px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700"
+              className="px-3 py-1 shadow-md bg-red-600 text-white rounded hover:bg-red-700"
             >
               {t("removeButton")}
             </button>
@@ -306,7 +306,7 @@ export const DynamicForm = () => {
               setTimeout(() => setCopySuccess(""), 2000);
             }}
             disabled={!generatedSchema}
-            className={`px-3 py-1 rounded bg-blue-600 text-white ${
+            className={`px-3 py-1 rounded shadow-md bg-blue-600 text-white ${
               generatedSchema
                 ? "hover:bg-blue-700 cursor-pointer"
                 : "cursor-not-allowed opacity-50"
@@ -324,7 +324,7 @@ export const DynamicForm = () => {
               setTimeout(() => setCopySuccess(""), 2000);
             }}
             disabled={!sampleData}
-            className={`px-3 py-1 rounded bg-indigo-600 text-white ${
+            className={`px-3 py-1 shadow-md rounded bg-indigo-600 text-white ${
               sampleData
                 ? "hover:bg-indigo-700 cursor-pointer"
                 : "cursor-not-allowed opacity-50"
@@ -344,7 +344,7 @@ export const DynamicForm = () => {
           <button
             onClick={handleGenerate}
             disabled={hasEmptyFields}
-            className={`px-3 py-1 rounded bg-green-600 text-white ${
+            className={`px-3 py-1 shadow-md rounded bg-green-600 text-white ${
               hasEmptyFields
                 ? "cursor-not-allowed opacity-50"
                 : "hover:bg-green-700 cursor-pointer"
@@ -361,7 +361,7 @@ export const DynamicForm = () => {
               setSampleData(null);
               setCopySuccess("");
             }}
-            className={`px-3 py-1 rounded bg-red-600 text-white ${
+            className={`px-3 py-1 shadow-md rounded bg-red-600 text-white ${
               hasEmptyFields
                 ? "cursor-not-allowed opacity-50"
                 : "hover:bg-red-700 cursor-pointer"
