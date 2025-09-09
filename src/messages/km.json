@@ -75,5 +75,13 @@
     "clearButton": "សម្អាត",
     "generatedSchema": "ស្គីម៉ាគំរូ",
     "sampleData": "ទិន្នន័យគំរូ"
+  },
+  "LunarDate": {
+    "title": "Lunar Date",
+    "description": "Convert date into Khmer Lunar date",
+    "inputLabel": "Type text in date format",
+    "chooseDate": "ជ្រើសរើសកាលបរិច្ឆេទ",
+    "copySuccess": "Date copied!",
+    "copyDate": "ចម្លង"
   }
 }
