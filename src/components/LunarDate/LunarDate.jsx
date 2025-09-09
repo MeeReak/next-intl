@@ -56,11 +56,11 @@ export const LunarDate = () => {
       .writeText(text)
       .then(() => {
         setCopySuccess(t("copySuccess"));
-        setTimeout(() => setCopySuccess(""), 2000);
+        setTimeout(() => setCopySuccess(""), 1500);
       })
       .catch(() => {
         setCopySuccess("Failed to copy");
-        setTimeout(() => setCopySuccess(""), 2000);
+        setTimeout(() => setCopySuccess(""), 1500);
       });
   };
 
@@ -70,13 +70,9 @@ export const LunarDate = () => {
       className="mx-auto space-y-4 max-w-xl rounded-lg border bg-card p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900"
     >
       <header className=" flex justify-between items-center">
-        <h1
-          id="lunar-date-title"
-          className="text-lg font-semibold tracking-tight"
-        >
+        <h1 id="lunar-date-title" className="block font-semibold text-xl">
           {t("chooseDate")}
         </h1>
-
         {/* Copy Success Message */}
         {copySuccess && (
           <span className="text-sm text-green-600 dark:text-green-400">
@@ -90,13 +86,13 @@ export const LunarDate = () => {
           type="date"
           value={selectedDate.toISOString().split("T")[0]}
           onChange={handleDateChange}
-          className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm shadow-sm transition-colors focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:border-gray-700 dark:bg-gray-800"
+          className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm shadow-sm transition-colors focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary border-gray-300 dark:border-gray-600 dark:bg-gray-800"
         />
       </div>
 
       {lunarResult && (
         <div className="flex justify-between items-center">
-          <div className="w-[75%] rounded-md border bg-muted/30 px-3 py-2 text-sm text-foreground dark:border-gray-700 dark:bg-gray-800 space-y-2 font-kantumruy">
+          <div className="w-[75%] rounded-md border bg-muted/30 px-3 py-2 text-sm text-foreground border-gray-300 dark:border-gray-600 dark:bg-gray-800 space-y-2 font-kantumruy">
             <p>
               ថ្ងៃ{lunarResult.dayName} {lunarResult.lunar_day} ខែ
               {lunarResult.lunar_month} ឆ្នាំ{lunarResult.zodiac_year}{" "}
@@ -117,7 +113,7 @@ export const LunarDate = () => {
       )}
       {khmerDate && (
         <div className="flex justify-between items-center">
-          <div className="w-[75%] rounded-md border bg-muted/30 px-3 py-2 text-sm text-foreground dark:border-gray-700 dark:bg-gray-800 space-y-2 font-kantumruy">
+          <div className="w-[75%] rounded-md border bg-muted/30 px-3 py-2 text-sm text-foreground border-gray-300 dark:border-gray-600 dark:bg-gray-800 space-y-2 font-kantumruy">
             <p>{khmerDate}</p>
           </div>
           <button
@@ -131,7 +127,7 @@ export const LunarDate = () => {
 
       {DefaultDate && (
         <div className="flex justify-between items-center">
-          <div className="w-[75%] rounded-md border bg-muted/30 px-3 py-2 text-sm text-foreground dark:border-gray-700 dark:bg-gray-800 space-y-2 font-kantumruy">
+          <div className="w-[75%] rounded-md border bg-muted/30 px-3 py-2 text-sm text-foreground border-gray-300 dark:border-gray-600 dark:bg-gray-800 space-y-2 font-kantumruy">
             <p>{DefaultDate}</p>
           </div>
           <button
