@@ -28,8 +28,11 @@ const caseTransform = (type, text) => {
           char === char.toLowerCase() ? char.toUpperCase() : char.toLowerCase()
         )
         .join("");
-    case "inverse-underscore":
-      return text.toUpperCase().replace(/ /g, "_");
+    case "random-separator": // ✅ new case
+      return text
+        .trim()
+        .split(/\s+/) // split words by whitespace
+        .join(Math.random() > 0.5 ? "_" : "-");
     case "no-symbol":
       return text
         .replace(/[^a-zA-Z0-9]+/g, " ")

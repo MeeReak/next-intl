@@ -3,10 +3,10 @@ const CASE_TYPES = [
   { key: "lower", label: "lower" },
   { key: "upper", label: "upper" },
   { key: "capitalized", label: "capitalized" },
-  { key: "title", label: "titleCase" },
+  // { key: "title", label: "titleCase" },
+  // { key: "inverse", label: "inverse" },
   { key: "alternating", label: "alternating" },
-  { key: "inverse", label: "inverse" },
-  { key: "inverse-underscore", label: "inverseUnderscore" },
+  { key: "random-separator", label: "randomSeparator" },
   {
     key: "no-symbol",
     label: "noSymbol"
