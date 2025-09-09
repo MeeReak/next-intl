@@ -78,6 +78,10 @@
   },
   "LunarDate": {
     "title": "Lunar Date",
-    "description": "Convert date into Khmer Lunar date"
+    "description": "Convert date into Khmer Lunar date",
+    "inputLabel": "Type text in date format",
+    "chooseDate": "ជ្រើសរើសកាលបរិច្ឆេទ",
+    "copySuccess": "Date copied!",
+    "copyDate": "ចម្លង"
   }
 }

@@ -78,6 +78,10 @@
   },
   "LunarDate": {
     "title": "Lunar Date",
-    "description": "Convert date into Khmer Lunar date"
+    "description": "Convert a Gregorian date into the Khmer Lunar calendar",
+    "inputLabel": "Enter a date",
+    "chooseDate": "Select a date",
+    "copySuccess": "Date copied!",
+    "copyDate": "Copy"
   }
 }

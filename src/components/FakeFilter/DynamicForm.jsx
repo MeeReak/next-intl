@@ -15,7 +15,7 @@ import {
   randomMajor,
   getKhmerMajor,
   getDate
-} from "../../util/helper";
+} from "../../util/Helper";
 
 export const DynamicForm = () => {
   const t = useTranslations("FakeFilter");

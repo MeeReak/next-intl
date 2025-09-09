@@ -1,3 +1,4 @@
+import { LunarDate } from "@/components/LunarDate/LunarDate";
 import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 
@@ -84,6 +85,7 @@ export default function Page() {
     <>
       <main className="min-h-screen p-6">
         <h1 className="text-3xl font-bold text-center mb-4">{t("title")}</h1>
+        <LunarDate />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}

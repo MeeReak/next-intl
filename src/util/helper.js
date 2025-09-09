@@ -1,4 +1,4 @@
-import { khDay, khDayInWeek, khDigit, khMonthInWeek } from "./Constant";
+import { khDigit, khMonthInWeek } from "./Constant";
 
 const generateUUID = () =>
   "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
