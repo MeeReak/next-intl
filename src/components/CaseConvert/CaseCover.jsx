@@ -31,8 +31,7 @@ const caseTransform = (type, text) => {
     case "random-separator": // ✅ new case
       return text
         .trim()
-        .split(/\s+/) // split words by whitespace
-        .join(Math.random() > 0.5 ? "_" : "-");
+        .replace(/\s+/g, () => (Math.random() < 0.5 ? "_" : "-"));
     case "no-symbol":
       return text
         .replace(/[^a-zA-Z0-9]+/g, " ")
@@ -47,9 +46,8 @@ export const CaseCover = () => {
   const t = useTranslations("CaseConverter");
   const [text, setText] = useState("");
   const [originalText, setOriginalText] = useState("");
-  const historyRef = useRef([]); // stack for undo
-  const textareaRef = useRef(null); // for caret control
-
+  const historyRef = useRef([]);  
+  const textareaRef = useRef(null);  
   const pushHistory = useCallback((prev) => {
     if (prev === undefined) return;
     const stack = historyRef.current;
@@ -59,7 +57,6 @@ export const CaseCover = () => {
   }, []);
 
   const handleCaseChange = (type) => {
-    // allow undo of a transform
     pushHistory(text);
     const transformed = caseTransform(type, originalText);
     setText(transformed);
@@ -67,7 +64,6 @@ export const CaseCover = () => {
 
   const handleTextareaChange = (e) => {
     const value = e.target.value;
-    // typing should be undoable
     pushHistory(text);
     setText(value);
     setOriginalText(value);
