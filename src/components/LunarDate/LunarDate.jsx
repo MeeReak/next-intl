@@ -70,7 +70,7 @@ export const LunarDate = () => {
       className="mx-auto space-y-4 max-w-xl rounded-lg border bg-card p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900"
     >
       <header className=" flex justify-between items-center">
-        <h1 id="lunar-date-title" className="block font-semibold text-xl">
+        <h1 id="lunar-date-title" className="block font-semibold text-xl ">
           {t("chooseDate")}
         </h1>
         {/* Copy Success Message */}
@@ -86,7 +86,7 @@ export const LunarDate = () => {
           type="date"
           value={selectedDate.toISOString().split("T")[0]}
           onChange={handleDateChange}
-          className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm shadow-sm transition-colors focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary border-gray-300 dark:border-gray-600 dark:bg-gray-800"
+          className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm shadow-sm transition-colors focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary border-gray-300 dark:border-gray-600 dark:bg-gray-800 font-kantumruy"
         />
       </div>
 

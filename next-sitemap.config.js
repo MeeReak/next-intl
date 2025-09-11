@@ -9,14 +9,16 @@ module.exports = {
   additionalPaths: async (config) => [
     { loc: "/en/", lastmod: new Date().toISOString() },
     { loc: "/km/", lastmod: new Date().toISOString() },
-    { loc: "/en/language", lastmod: new Date().toISOString() },
-    { loc: "/km/language", lastmod: new Date().toISOString() },
     { loc: "/en/case-convert", lastmod: new Date().toISOString() },
     { loc: "/km/case-convert", lastmod: new Date().toISOString() },
     { loc: "/en/google-len", lastmod: new Date().toISOString() },
     { loc: "/km/google-len", lastmod: new Date().toISOString() },
     { loc: "/en/fake-filter", lastmod: new Date().toISOString() },
-    { loc: "/km/fake-filter", lastmod: new Date().toISOString() }
+    { loc: "/km/fake-filter", lastmod: new Date().toISOString() },
+    { loc: "/en/lunar-date", lastmod: new Date().toISOString() },
+    { loc: "/km/lunar-date", lastmod: new Date().toISOString() },
+    { loc: "/en/json-data", lastmod: new Date().toISOString() },
+    { loc: "/km/json-data", lastmod: new Date().toISOString() }
     // Add other paths manually or fetch from your CMS/db
   ]
   // transform: async (config, path) => {

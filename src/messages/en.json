@@ -75,5 +75,21 @@
     "clearButton": "Clear",
     "generatedSchema": "Sample Schema",
     "sampleData": "Sample Data"
+  },
+  "LunarDate": {
+    "title": "Lunar Date",
+    "description": "Convert a Gregorian date into the Khmer Lunar calendar",
+    "inputLabel": "Enter a date",
+    "chooseDate": "Select a date",
+    "copySuccess": "Date copied!",
+    "copyDate": "Copy"
+  },
+  "JsonData": {
+    "title": "Json Data",
+    "description": "Generate a sample data base JSON schema.",
+    "inputLabel": "Input JSON schema you'd like to generate",
+    "sampleData": "Sample Data copied!",
+    "copyData": "Copy",
+    "clearButton": "Clear"
   }
 }
