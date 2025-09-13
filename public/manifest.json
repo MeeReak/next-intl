@@ -28,15 +28,9 @@
   ],
   "screenshots": [
     {
-      "src": "/screenshot-1.png",
+      "src": "/image-640x480.jng",
       "sizes": "640x480",
       "type": "image/png"
-    },
-    {
-      "src": "/screenshot-2.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide"
     }
   ]
 }
