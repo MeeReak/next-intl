@@ -13,6 +13,9 @@ export async function generateMetadata({ params }) {
 
   const isDefaultLocale = locale === "km";
   const baseUrl = "https://next-js-intl.vercel.app";
+  const manifestUrl = isDefaultLocale
+    ? "/manifest.json"
+    : `/${locale}/manifest.json`;
 
   return {
     title: t("meta.title"),
@@ -42,7 +45,7 @@ export async function generateMetadata({ params }) {
       ]
     },
 
-    manifest: "/manifest.json",
+    manifest: manifestUrl,
 
     openGraph: {
       title: t("meta.title"),
