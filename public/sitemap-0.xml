@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://next-js-intl.vercel.app/en</loc><lastmod>2025-09-10T01:28:41.500Z</lastmod></url>
-<url><loc>https://next-js-intl.vercel.app/km</loc><lastmod>2025-09-10T01:28:41.500Z</lastmod></url>
-<url><loc>https://next-js-intl.vercel.app/en/language</loc><lastmod>2025-09-10T01:28:41.500Z</lastmod></url>
-<url><loc>https://next-js-intl.vercel.app/km/language</loc><lastmod>2025-09-10T01:28:41.500Z</lastmod></url>
-<url><loc>https://next-js-intl.vercel.app/en/case-convert</loc><lastmod>2025-09-10T01:28:41.500Z</lastmod></url>
-<url><loc>https://next-js-intl.vercel.app/km/case-convert</loc><lastmod>2025-09-10T01:28:41.500Z</lastmod></url>
-<url><loc>https://next-js-intl.vercel.app/en/google-len</loc><lastmod>2025-09-10T01:28:41.500Z</lastmod></url>
-<url><loc>https://next-js-intl.vercel.app/km/google-len</loc><lastmod>2025-09-10T01:28:41.500Z</lastmod></url>
-<url><loc>https://next-js-intl.vercel.app/en/fake-filter</loc><lastmod>2025-09-10T01:28:41.500Z</lastmod></url>
-<url><loc>https://next-js-intl.vercel.app/km/fake-filter</loc><lastmod>2025-09-10T01:28:41.500Z</lastmod></url>
+<url><loc>https://next-js-intl.vercel.app/en</loc><lastmod>2025-09-13T08:04:56.972Z</lastmod></url>
+<url><loc>https://next-js-intl.vercel.app/km</loc><lastmod>2025-09-13T08:04:56.973Z</lastmod></url>
+<url><loc>https://next-js-intl.vercel.app/en/case-convert</loc><lastmod>2025-09-13T08:04:56.973Z</lastmod></url>
+<url><loc>https://next-js-intl.vercel.app/km/case-convert</loc><lastmod>2025-09-13T08:04:56.973Z</lastmod></url>
+<url><loc>https://next-js-intl.vercel.app/en/google-len</loc><lastmod>2025-09-13T08:04:56.973Z</lastmod></url>
+<url><loc>https://next-js-intl.vercel.app/km/google-len</loc><lastmod>2025-09-13T08:04:56.973Z</lastmod></url>
+<url><loc>https://next-js-intl.vercel.app/en/fake-filter</loc><lastmod>2025-09-13T08:04:56.973Z</lastmod></url>
+<url><loc>https://next-js-intl.vercel.app/km/fake-filter</loc><lastmod>2025-09-13T08:04:56.973Z</lastmod></url>
+<url><loc>https://next-js-intl.vercel.app/en/lunar-date</loc><lastmod>2025-09-13T08:04:56.973Z</lastmod></url>
+<url><loc>https://next-js-intl.vercel.app/km/lunar-date</loc><lastmod>2025-09-13T08:04:56.973Z</lastmod></url>
+<url><loc>https://next-js-intl.vercel.app/en/json-data</loc><lastmod>2025-09-13T08:04:56.973Z</lastmod></url>
+<url><loc>https://next-js-intl.vercel.app/km/json-data</loc><lastmod>2025-09-13T08:04:56.973Z</lastmod></url>
 </urlset>
