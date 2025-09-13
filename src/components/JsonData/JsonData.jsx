@@ -80,22 +80,21 @@ export const JsonData = () => {
       <textarea
         className="w-full rounded-md border border-gray-300 dark:border-gray-600 p-2 font-mono text-sm dark:bg-gray-800 dark:text-white"
         rows={7}
-        placeholder="Paste your JSON schema here..."
         value={schemaInput}
         onChange={(e) => setSchemaInput(e.target.value)}
-        onPaste={(e) => {
-          const pastedText = e.clipboardData.getData("text");
-          setSchemaInput(pastedText);
-        }}
       />
 
-      {error && <p className="text-red-500">{error}</p>}
       <div className=" flex justify-between items-center">
         <div className=" flex gap-x-2 items-center">
           <h3 className="font-semibold">{t("sampleData")}:</h3>{" "}
           {copySuccess && (
             <span className="text-sm text-green-600 dark:text-green-400">
               {copySuccess}
+            </span>
+          )}
+          {error && schemaInput.length !== 0 && (
+            <span className="text-sm text-red-600 dark:text-red-500">
+              {error}
             </span>
           )}
         </div>

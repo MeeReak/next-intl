@@ -29,9 +29,9 @@ const caseTransform = (type, text) => {
         )
         .join("");
     case "random-separator": // ✅ new case
-      return text
-        .trim()
-        .replace(/\s+/g, () => (Math.random() < 0.5 ? "_" : "-"));
+      if (!text.trim()) return text;
+      const separator = Math.random() < 0.5 ? "_" : "-"; // pick once
+      return text.trim().replace(/\s+/g, separator);
     case "no-symbol":
       return text
         .replace(/[^a-zA-Z0-9]+/g, " ")
@@ -46,8 +46,8 @@ export const CaseCover = () => {
   const t = useTranslations("CaseConverter");
   const [text, setText] = useState("");
   const [originalText, setOriginalText] = useState("");
-  const historyRef = useRef([]);  
-  const textareaRef = useRef(null);  
+  const historyRef = useRef([]);
+  const textareaRef = useRef(null);
   const pushHistory = useCallback((prev) => {
     if (prev === undefined) return;
     const stack = historyRef.current;
@@ -179,22 +179,6 @@ export const CaseCover = () => {
 
       <div className="flex gap-2 mt-4 flex-wrap ">
         <button
-          onClick={downloadTextFile}
-          disabled={text.length === 0}
-          className={`px-3 py-1 bg-green-500 text-white rounded dark:bg-green-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-50 
-            ${text.length === 0 ? "cursor-not-allowed opacity-50" : "hover:bg-green-700 cursor-pointer"}`}
-        >
-          {t("download")}
-        </button>
-        <button
-          onClick={() => navigator.clipboard.writeText(text)}
-          disabled={text.length === 0}
-          className={`px-3 py-1 bg-blue-500 text-white rounded dark:bg-blue-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 
-            ${text.length === 0 ? "cursor-not-allowed opacity-50" : "hover:bg-blue-700 cursor-pointer"}`}
-        >
-          {t("copy")}
-        </button>
-        <button
           onClick={() => {
             pushHistory(text);
             setText("");
@@ -205,6 +189,23 @@ export const CaseCover = () => {
             ${text.length === 0 ? "cursor-not-allowed opacity-50" : "hover:bg-red-700 cursor-pointer"}`}
         >
           {t("clear")}
+        </button>
+        <button
+          onClick={() => navigator.clipboard.writeText(text)}
+          disabled={text.length === 0}
+          className={`px-3 py-1 bg-blue-500 text-white rounded dark:bg-blue-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 
+            ${text.length === 0 ? "cursor-not-allowed opacity-50" : "hover:bg-blue-700 cursor-pointer"}`}
+        >
+          {t("copy")}
+        </button>
+
+        <button
+          onClick={downloadTextFile}
+          disabled={text.length === 0}
+          className={`px-3 py-1 bg-green-500 text-white rounded dark:bg-green-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-50 
+            ${text.length === 0 ? "cursor-not-allowed opacity-50" : "hover:bg-green-700 cursor-pointer"}`}
+        >
+          {t("download")}
         </button>
       </div>
     </section>

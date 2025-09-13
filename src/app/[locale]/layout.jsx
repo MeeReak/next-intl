@@ -3,10 +3,9 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "../../../src/i18n/routing";
-import { LocaleSwitcher } from "../../components/LocaleSwitcher";
 import { getTranslations } from "next-intl/server";
 import { ThemeProvider } from "next-themes";
-import ThemeToggle from "../../components/ThemeSwitcher";
+import { LocaleTheme } from "@/components/LocaleTheme";
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
@@ -113,8 +112,7 @@ export default async function LocaleLayout({ children, params }) {
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <NextIntlClientProvider messages={messages}>
-        <LocaleSwitcher />
-        <ThemeToggle />
+        <LocaleTheme />
         <div className={fontClass}>{children}</div>
       </NextIntlClientProvider>
     </ThemeProvider>

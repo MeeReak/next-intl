@@ -43,7 +43,7 @@
   "GoogleLen": {
     "title": "Google Len",
     "description": "Scan and extract QR code data from images and PDFs easily.",
-    "inputLabel": "Upload your image or PDF file for processing",
+    "inputLabel": "Upload your Image or PDF",
     "dragLabel": "Drag your file here",
     "clickLabel": "or click to select an image/PDF",
     "preview": "Selected File",

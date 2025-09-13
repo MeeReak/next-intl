@@ -9,14 +9,14 @@ export async function generateMetadata({ params }) {
   const isDefaultLocale = locale === "km";
 
   return {
-    title: t("GoogleLen.title"),
-    description: t("GoogleLen.description"),
+    title: t("LunarDate.title"),
+    description: t("LunarDate.description"),
     openGraph: {
-      title: t("GoogleLen.title"),
-      description: t("GoogleLen.description"),
+      title: t("LunarDate.title"),
+      description: t("LunarDate.description"),
       url: isDefaultLocale
-        ? baseUrl + "/google-len"
-        : `${baseUrl}/${locale}/google-len`,
+        ? baseUrl + "/lunar-date"
+        : `${baseUrl}/${locale}/lunar-date`,
       type: "website",
       locale: locale === "km" ? "km-KH" : "en-US",
       siteName: "Tithyareak App",
@@ -25,30 +25,30 @@ export async function generateMetadata({ params }) {
           url: "https://profit.pakistantoday.com.pk/wp-content/uploads/2025/04/donkey-donkey-hd-free-download-world-hd-1200x630-cropped.jpg",
           width: 1200,
           height: 630,
-          alt: "Tithyareak App | GoogleLen QR Code Scanner Tool"
+          alt: "Tithyareak App | LunarDate"
         }
       ]
     },
     twitter: {
       card: "summary_large_image",
-      title: t("GoogleLen.title"),
-      description: t("GoogleLen.description"),
+      title: t("LunarDate.title"),
+      description: t("LunarDate.description"),
       images: [
         {
           url: "https://profit.pakistantoday.com.pk/wp-content/uploads/2025/04/donkey-donkey-hd-free-download-world-hd-1200x630-cropped.jpg",
           width: 1200,
           height: 630,
-          alt: "Tithyareak App"
+          alt: "Tithyareak App | LunarDate"
         }
       ]
     },
     alternates: {
       canonical: isDefaultLocale
-        ? baseUrl + "/google-len"
-        : `${baseUrl}/${locale}/google-len`,
+        ? baseUrl + "/lunar-date"
+        : `${baseUrl}/${locale}/lunar-date`,
       languages: {
-        en: `${baseUrl}/en/google-len`,
-        km: `${baseUrl}/google-len`
+        en: `${baseUrl}/en/lunar-date`,
+        km: `${baseUrl}/lunar-date`
       }
     },
     keywords: ["qr code reader", "image upload", "qr scanner", "free tool"],
@@ -69,7 +69,7 @@ export default function Page() {
     applicationCategory: "UtilitiesApplication",
     operatingSystem: "All",
     description: t("description"),
-    url: "https://next-js-intl.vercel.app/google-len",
+    url: "https://next-js-intl.vercel.app/lunar-date",
     author: {
       "@type": "Organization",
       name: "Tithyareak App"

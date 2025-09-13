@@ -132,16 +132,19 @@ export const GoogleLen = () => {
   return (
     <section
       aria-labelledby="google-len-title"
-      className="p-6 rounded-xl shadow-md max-w-3xl mx-auto border border-gray-300 bg-white dark:bg-gray-900 dark:border-gray-700 dark:text-white font-kantumruy"
+      className="p-4 lg:p-6 rounded-xl shadow-md max-w-3xl mx-auto border border-gray-300 bg-white dark:bg-gray-900 dark:border-gray-700 dark:text-white font-kantumruy"
     >
-      <header className="flex justify-between items-center mb-4">
-        <h1 id="google-len-title" className="block font-semibold text-xl">
+      <header className="flex justify-between items-center mb-3 lg:mb-4">
+        <h1
+          id="google-len-title"
+          className="block font-semibold text-lg lg:text-xl"
+        >
           {t("inputLabel")}
         </h1>
         {files.length > 0 && (
           <button
             onClick={resetFiles}
-            className="text-sm px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700"
+            className="text-xs lg:text-sm px-2 lg:px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700"
             aria-label={t("clearFiles")}
           >
             {t("clear")}
@@ -152,7 +155,7 @@ export const GoogleLen = () => {
       <div
         onDrop={handleDrop}
         onDragOver={(e) => e.preventDefault()}
-        className="w-full border-2 border-dashed border-blue-400 rounded-xl px-6 py-16 text-center bg-blue-50 hover:bg-blue-100 dark:bg-blue-950 dark:hover:bg-blue-900 transition-all cursor-pointer"
+        className="w-full border-2 border-dashed border-blue-400 rounded-xl px-6 py-8 lg:py-16 text-center bg-blue-50 hover:bg-blue-100 dark:bg-blue-950 dark:hover:bg-blue-900 transition-all cursor-pointer"
         role="region"
         aria-describedby="drag-drop-desc"
       >
@@ -167,11 +170,11 @@ export const GoogleLen = () => {
         <label htmlFor="fileInput" className="cursor-pointer" tabIndex={0}>
           <p
             id="drag-drop-desc"
-            className="text-blue-700 dark:text-blue-300 font-medium text-lg"
+            className="text-blue-700 dark:text-blue-300 font-medium text-base lg:text-lg"
           >
             {t("dragLabel")}
           </p>
-          <p className="text-sm text-gray-500 dark:text-gray-300 mt-1">
+          <p className="text-xs lg:text-sm text-gray-500 dark:text-gray-300 mt-1">
             {t("clickLabel")}
           </p>
         </label>
@@ -209,24 +212,29 @@ export const GoogleLen = () => {
       )}
 
       {previews.length > 0 && (
-        <ul className="mt-6 w-full space-y-4" aria-live="polite">
+        <ul
+          className="mt-4 lg:mt-6 w-full space-y-2 lg:space-y-4"
+          aria-live="polite"
+        >
           {[...previews].reverse().map(({ file, previewUrl }, index) => {
             const reversedIndex = previews.length - 1 - index;
 
             return (
               <li
                 key={reversedIndex}
-                className="flex flex-col gap-2 border border-gray-300 dark:border-gray-700 rounded px-3 py-2"
+                className="flex flex-col gap-2 border border-gray-300 dark:border-gray-700 rounded px-2 lg:px-3 py-2"
                 tabIndex={0}
                 aria-label={`${file.name} ${
                   qrResults[reversedIndex] ? t("qrCodeFound") : t("noQRFound")
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <div className="truncate">{file.name}</div>
+                  <div className="truncate text-xs lg:text-base">
+                    {file.name}
+                  </div>
                   <button
                     onClick={() => removeFile(reversedIndex)}
-                    className="text-sm px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700"
+                    className="text-xs lg:text-sm px-2 lg:px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700"
                     aria-label={t("removeFile", { fileName: file.name })}
                   >
                     {t("remove")}
@@ -238,12 +246,12 @@ export const GoogleLen = () => {
                     href={qrResults[reversedIndex]}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-green-600 underline break-all"
+                    className="text-green-600 underline break-all line-clamp-2 lg:line-clamp-2 text-xs lg:text-base"
                   >
                     {qrResults[reversedIndex]}
                   </a>
                 ) : (
-                  <span className="text-gray-400 italic text-sm">
+                  <span className="text-gray-400 italic text-xs lg:text-base">
                     {t("noQRFound")}
                   </span>
                 )}
