@@ -42,7 +42,7 @@ export async function generateMetadata({ params }) {
       ]
     },
 
-    manifest: "/site.webmanifest",
+    manifest: "/manifest.json",
 
     openGraph: {
       title: t("meta.title"),
