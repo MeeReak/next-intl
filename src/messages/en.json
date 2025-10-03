@@ -88,8 +88,9 @@
     "title": "Json Data",
     "description": "Generate a sample data base JSON schema.",
     "inputLabel": "Input JSON schema you'd like to generate",
-    "sampleData": "Sample Data copied!",
+    "sampleData": "Sample Data",
     "copyData": "Copy",
-    "clearButton": "Clear"
+    "clearButton": "Clear",
+    "invalid": "Invalid JSON Schema"
   }
 }

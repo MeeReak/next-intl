@@ -55,7 +55,7 @@ export const JsonData = () => {
       setSampleData(generated);
       setError(null);
     } catch (err) {
-      setError("Invalid JSON Schema");
+      setError(t("invalid"));
       setSampleData(null);
     }
   }, [schemaInput]);
@@ -86,7 +86,7 @@ export const JsonData = () => {
 
       <div className=" flex justify-between items-center">
         <div className=" flex gap-x-2 items-center">
-          <h3 className="font-semibold">{t("sampleData")}:</h3>{" "}
+          <p className="font-semibold">{t("sampleData")}:</p>{" "}
           {copySuccess && (
             <span className="text-sm text-green-600 dark:text-green-400">
               {copySuccess}

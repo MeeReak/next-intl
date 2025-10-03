@@ -153,7 +153,6 @@ export const CaseCover = () => {
         rows={5}
         value={text}
         onChange={handleTextareaChange}
-        onPaste={handleTextareaPaste}
         onKeyDown={handleTextareaKeyDown}
         spellCheck={true}
         className="w-full border rounded p-3 focus:outline-none focus:ring-2 focus:ring-blue-500

@@ -81,16 +81,17 @@
     "description": "Convert date into Khmer Lunar date",
     "inputLabel": "Type text in date format",
     "chooseDate": "ជ្រើសរើសកាលបរិច្ឆេទ",
-    "copySuccess": "Date copied!",
+    "copySuccess": "បានចម្លងកាលបរិច្ឆេទ!",
     "copyDate": "ចម្លង"
   },
   "JsonData": {
     "title": "ទិន្នន័យ Json",
-    "description": "បង្កើតទិន្នន័យគំរូនៃ JSON ផ្អែកលើ JSON schema ",
+    "description": "បង្កើតទិន្នន័យគំរូនៃ JSON ផ្អែកលើ JSON schema",
     "inputLabel": "បញ្ចូល JSON schema ដែលអ្នកចង់បង្កើត",
     "sampleData": "ទិន្នន័យគំរូ",
     "copySuccess": "បានចម្លងទិន្នន័យគំរូ!",
     "copyData": "ចម្លង",
-    "clearButton": "សម្អាត"
+    "clearButton": "សម្អាត",
+    "invalid": "JSON Schema មិនត្រឹមត្រូវ"
   }
 }
