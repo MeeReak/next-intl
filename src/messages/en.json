@@ -89,8 +89,26 @@
     "description": "Generate a sample data base JSON schema.",
     "inputLabel": "Input JSON schema you'd like to generate",
     "sampleData": "Sample Data",
+    "copySuccess": "Sample data copied!",
     "copyData": "Copy",
     "clearButton": "Clear",
     "invalid": "Invalid JSON Schema"
+  },
+  "ImageBase64": {
+    "title": "ImageBase64",
+    "description": "Convert an image into base64 in your local",
+    "inputLabel": "Upload your image",
+    "dragLabel": "Drag your file here",
+    "clickLabel": "or click to select an image",
+    "result": "Result",
+    "fileName": "FileName",
+    "fileSize": "FileSize",
+    "progress": "Progress",
+    "converted": "Converted",
+    "actions": "Actions",
+    "copyImage": "Copy Image",
+    "copyCss": "Copy Css",
+    "copySuccess": "Copied!",
+    "waring": "File is too big. Max filesize: 5MiB."
   }
 }

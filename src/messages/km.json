@@ -93,5 +93,22 @@
     "copyData": "ចម្លង",
     "clearButton": "សម្អាត",
     "invalid": "JSON Schema មិនត្រឹមត្រូវ"
+  },
+  "ImageBase64": {
+    "title": "ImageBase64",
+    "description": "បម្លែងរូបភាពទៅជា base64 នៅក្នុងម៉ាស៊ីនរបស់អ្នក",
+    "inputLabel": "បញ្ចូលរូបភាពរបស់អ្នក",
+    "dragLabel": "អូសឯកសាមកទីនេះ",
+    "clickLabel": "ឬ ចុចដើម្បីជ្រើសរើសរូបភាព",
+    "result": "លទ្ធផល",
+    "fileName": "ឈ្មោះឯកសារ",
+    "fileSize": "ទំហំឯកសារ",
+    "progress": "វឌ្ឍនភាព",
+    "converted": "បានបម្លែង",
+    "actions": "សកម្មភាព",
+    "copyImage": "ចម្លងរូបភាព",
+    "copyCss": "ចម្លង CSS",
+    "copySuccess": "បានចម្លង!",
+    "waring": "ឯកសារធំពេក ទំហំអតិបរមា: 5MiB"
   }
 }

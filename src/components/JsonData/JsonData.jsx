@@ -86,7 +86,7 @@ export const JsonData = () => {
 
       <div className=" flex justify-between items-center">
         <div className=" flex gap-x-2 items-center">
-          <p className="font-semibold">{t("sampleData")}:</p>{" "}
+          <p>{t("sampleData")}:</p>{" "}
           {copySuccess && (
             <span className="text-sm text-green-600 dark:text-green-400">
               {copySuccess}
