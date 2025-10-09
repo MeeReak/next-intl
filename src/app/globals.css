@@ -72,3 +72,15 @@ textarea {
 textarea::-webkit-scrollbar {
   display: none; /* Chrome, Safari */
 }
+
+/* Tailwind doesn't style scrollbars by default */
+::-webkit-scrollbar {
+  height: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
