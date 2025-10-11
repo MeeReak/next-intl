@@ -10,7 +10,7 @@ export const FakeFilter = () => {
   return (
     <section
       aria-labelledby="google-len-title"
-      className="p-6 rounded-xl shadow-md max-w-3xl mx-auto border border-gray-300 bg-white dark:bg-gray-900 dark:border-gray-700 dark:text-white font-kantumruy"
+      className="p-6 rounded-xl shadow-md max-w-3xl mx-auto border border-gray-300 bg-white dark:bg-gray-900 dark:border-gray-700 dark:text-white"
     >
       <header className="flex justify-between items-center mb-4">
         <h1 id="google-len-title" className="block font-semibold text-xl">

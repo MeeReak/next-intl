@@ -224,7 +224,7 @@ export const ImageBase64 = () => {
                   </td>
                   <td className="p-2 min-w-[320px]">
                     {f.progress < 100 ? (
-                      <span className="text-gray-500 text-xs">
+                      <span className="text-gray-300 text-xs">
                         {t("progressing")}
                       </span>
                     ) : f.tooBig || f.isError ? (
@@ -255,7 +255,7 @@ export const ImageBase64 = () => {
                               );
                             }}
                             disabled={!f.base64}
-                            className={`whitespace-nowrap px-3 py-[7px] text-xs rounded transition-all flex items-center justify-center gap-1 ${
+                            className={`min-w-[100px] whitespace-nowrap py-[7px] text-xs rounded transition-all flex items-center justify-center gap-1 ${
                               f.copiedImage
                                 ? "bg-blue-500 text-white"
                                 : "bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600"
@@ -285,7 +285,7 @@ export const ImageBase64 = () => {
                               );
                             }}
                             disabled={!f.base64}
-                            className={`whitespace-nowrap px-3 py-[7px] text-xs rounded transition-all flex items-center justify-center gap-1 ${
+                            className={`min-w-[100px] whitespace-nowrap py-[7px] text-xs rounded transition-all flex items-center justify-center gap-1 ${
                               f.copiedCss
                                 ? "bg-blue-500 text-white"
                                 : "bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600"

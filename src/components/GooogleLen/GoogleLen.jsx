@@ -132,7 +132,7 @@ export const GoogleLen = () => {
   return (
     <section
       aria-labelledby="google-len-title"
-      className="p-4 lg:p-6 rounded-xl shadow-md max-w-3xl mx-auto border border-gray-300 bg-white dark:bg-gray-900 dark:border-gray-700 dark:text-white font-kantumruy"
+      className="p-4 lg:p-6 rounded-xl shadow-md max-w-3xl mx-auto border border-gray-300 bg-white dark:bg-gray-900 dark:border-gray-700 dark:text-white"
     >
       <header className="flex justify-between items-center mb-3 lg:mb-4">
         <h1

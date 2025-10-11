@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { gregorianToKhmerLunar } from "@/util/KhmerLunarDate";
 import { khDayInWeek } from "@/util/Constant";
 import { getDate, getKhmerDate } from "../../util/Helper";
+import { Check, Copy } from "lucide-react"; // make sure you have lucide-react installed
 
 export const LunarDate = () => {
   const t = useTranslations("LunarDate");
@@ -13,7 +14,7 @@ export const LunarDate = () => {
   const [lunarResult, setLunarResult] = useState(null);
   const [khmerDate, setKhmerDate] = useState("");
   const [DefaultDate, setDefaultDate] = useState("");
-  const [copySuccess, setCopySuccess] = useState("");
+  const [copiedButton, setCopiedButton] = useState(""); // track which button was copied
 
   const handleDateChange = (event) => {
     const dateValue = new Date(event.target.value);
@@ -24,7 +25,6 @@ export const LunarDate = () => {
     updateDateResults(dateValue);
   };
 
-  // Extract the logic to update results into a function
   const updateDateResults = (dateValue) => {
     setSelectedDate(dateValue);
 
@@ -45,40 +45,31 @@ export const LunarDate = () => {
     setDefaultDate(getDate(dateValue));
   };
 
-  // Run once on component mount
   useEffect(() => {
     updateDateResults(selectedDate);
   }, []);
 
-  // Copy function remains the same
-  const handleCopy = (text) => {
+  const handleCopy = (text, key) => {
     navigator.clipboard
       .writeText(text)
       .then(() => {
-        setCopySuccess(t("copySuccess"));
-        setTimeout(() => setCopySuccess(""), 1500);
+        setCopiedButton(key);
+        setTimeout(() => setCopiedButton(""), 1500);
       })
       .catch(() => {
-        setCopySuccess("Failed to copy");
-        setTimeout(() => setCopySuccess(""), 1500);
+        console.error("Failed to copy");
       });
   };
 
   return (
     <section
       aria-labelledby="lunar-date-title"
-      className="mx-auto space-y-4 max-w-xl rounded-lg border bg-card p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900"
+      className="mx-auto space-y-4 max-w-2xl transition-all rounded-lg border bg-card p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900"
     >
-      <header className=" flex justify-between items-center">
-        <h1 id="lunar-date-title" className="block font-semibold text-xl ">
+      <header className="flex justify-between items-center">
+        <h1 id="lunar-date-title" className="block font-semibold text-xl">
           {t("chooseDate")}
         </h1>
-        {/* Copy Success Message */}
-        {copySuccess && (
-          <span className="text-sm text-green-600 dark:text-green-400">
-            {copySuccess}
-          </span>
-        )}
       </header>
 
       <div>
@@ -90,51 +81,100 @@ export const LunarDate = () => {
         />
       </div>
 
+      {/* Lunar Date */}
       {lunarResult && (
         <div className="flex justify-between items-center">
-          <div className="w-[75%] rounded-md border bg-muted/30 px-3 py-2 text-sm text-foreground border-gray-300 dark:border-gray-600 dark:bg-gray-800 space-y-2 font-kantumruy">
+          <div className="w-[60%] rounded-md border bg-muted/30 px-3 py-2 text-sm text-foreground border-gray-300 dark:border-gray-600 dark:bg-gray-800 space-y-2 font-kantumruy">
             <p>
               ថ្ងៃ{lunarResult.dayName} {lunarResult.lunar_day} ខែ
               {lunarResult.lunar_month} ឆ្នាំ{lunarResult.zodiac_year}{" "}
               {lunarResult.stem} ព.ស. {lunarResult.lunar_year}
             </p>
           </div>
-          <button
-            onClick={() =>
-              handleCopy(
-                `ថ្ងៃ${lunarResult.dayName} ${lunarResult.lunar_day} ខែ${lunarResult.lunar_month} ឆ្នាំ${lunarResult.zodiac_year} ${lunarResult.stem} ព.ស. ${lunarResult.lunar_year}`
-              )
-            }
-            className="px-3 py-1 shadow-md rounded bg-green-600 text-white hover:bg-green-700 cursor-pointer text-sm"
-          >
-            {t("copyDate")}
-          </button>
+          {lunarResult && (
+            <button
+              onClick={() =>
+                handleCopy(
+                  `ថ្ងៃ${lunarResult.dayName} ${lunarResult.lunar_day} ខែ${lunarResult.lunar_month} ឆ្នាំ${lunarResult.zodiac_year} ${lunarResult.stem} ព.ស. ${lunarResult.lunar_year}`,
+                  "lunar"
+                )
+              }
+              className={`min-w-[120px] whitespace-nowrap py-[7px] text-xs rounded transition-all flex items-center justify-center gap-1 ${
+                copiedButton === "lunar"
+                  ? "bg-green-500 text-white"
+                  : "bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600"
+              }`}
+            >
+              {copiedButton === "lunar" ? (
+                <div className="flex gap-x-2 items-center">
+                  <Check className="size-3" />
+                  {t("copySuccess")}
+                </div>
+              ) : (
+                <div className="flex gap-x-2 items-center">
+                  <Copy className="size-3" />
+                  {t("copyDate")}
+                </div>
+              )}
+            </button>
+          )}
         </div>
       )}
+
+      {/* Khmer Date */}
       {khmerDate && (
         <div className="flex justify-between items-center">
-          <div className="w-[75%] rounded-md border bg-muted/30 px-3 py-2 text-sm text-foreground border-gray-300 dark:border-gray-600 dark:bg-gray-800 space-y-2 font-kantumruy">
+          <div className="w-[60%] rounded-md border bg-muted/30 px-3 py-2 text-sm text-foreground border-gray-300 dark:border-gray-600 dark:bg-gray-800 space-y-2 font-kantumruy">
             <p>{khmerDate}</p>
           </div>
           <button
-            onClick={() => handleCopy(khmerDate)}
-            className="px-3 py-1 shadow-md rounded bg-green-600 text-white hover:bg-green-700 cursor-pointer text-sm"
+            onClick={() => handleCopy(khmerDate, "khmer")}
+            className={`min-w-[120px] whitespace-nowrap py-[7px] text-xs rounded transition-all flex items-center justify-center gap-1 ${
+              copiedButton === "khmer"
+                ? "bg-green-500 text-white"
+                : "bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600"
+            }`}
           >
-            {t("copyDate")}
+            {copiedButton === "khmer" ? (
+              <div className="flex gap-x-2 items-center">
+                <Check className="size-3" />
+                {t("copySuccess")}
+              </div>
+            ) : (
+              <div className="flex gap-x-2 items-center">
+                <Copy className="size-3" />
+                {t("copyDate")}
+              </div>
+            )}
           </button>
         </div>
       )}
 
+      {/* Default Date */}
       {DefaultDate && (
         <div className="flex justify-between items-center">
-          <div className="w-[75%] rounded-md border bg-muted/30 px-3 py-2 text-sm text-foreground border-gray-300 dark:border-gray-600 dark:bg-gray-800 space-y-2 font-nunito">
+          <div className="w-[60%] rounded-md border bg-muted/30 px-3 py-2 text-sm text-foreground border-gray-300 dark:border-gray-600 dark:bg-gray-800 space-y-2 font-nunito">
             <p>{DefaultDate}</p>
           </div>
           <button
-            onClick={() => handleCopy(DefaultDate)}
-            className="px-3 py-1 shadow-md rounded bg-green-600 text-white hover:bg-green-700 cursor-pointer text-sm"
+            onClick={() => handleCopy(DefaultDate, "default")}
+            className={`min-w-[120px] whitespace-nowrap py-[7px] text-xs rounded transition-all flex items-center justify-center gap-1 ${
+              copiedButton === "default"
+                ? "bg-green-500 text-white"
+                : "bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600"
+            }`}
           >
-            {t("copyDate")}
+            {copiedButton === "default" ? (
+              <div className="flex gap-x-2 items-center">
+                <Check className="size-3" />
+                {t("copySuccess")}
+              </div>
+            ) : (
+              <div className="flex gap-x-2 items-center">
+                <Copy className="size-3" />
+                {t("copyDate")}
+              </div>
+            )}
           </button>
         </div>
       )}

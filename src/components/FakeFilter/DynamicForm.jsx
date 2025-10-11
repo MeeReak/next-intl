@@ -375,14 +375,14 @@ export const DynamicForm = () => {
       <div className="flex justify-between">
         {/* Output */}
         {generatedSchema && (
-          <div className="mt-2 p-4 bg-gray-100 dark:bg-gray-900 rounded text-sm font-mono overflow-x-auto text-black dark:text-white border border-gray-300 dark:border-gray-700 font-kantumruy">
+          <div className="mt-2 p-4 bg-gray-100 dark:bg-gray-900 rounded text-sm font-mono overflow-x-auto text-black dark:text-white border border-gray-300 dark:border-gray-700">
             <h3 className="mb-2 font-semibold">{t("generatedSchema")}:</h3>
             <pre>{JSON.stringify(generatedSchema, null, 2)}</pre>
           </div>
         )}
 
         {sampleData && (
-          <div className="mt-2 p-4 bg-gray-50 dark:bg-gray-900 rounded text-sm font-mono overflow-x-auto text-black dark:text-white border border-gray-300 dark:border-gray-700 font-kantumruy">
+          <div className="mt-2 p-4 bg-gray-50 dark:bg-gray-900 rounded text-sm font-mono overflow-x-auto text-black dark:text-white border border-gray-300 dark:border-gray-700">
             <h3 className="mb-2 font-semibold">{t("sampleData")}:</h3>
             <pre>{JSON.stringify(sampleData, null, 2)}</pre>
           </div>

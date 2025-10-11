@@ -2,10 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* :root {
   --background: #ffffff;
   --foreground: #171717;
-}
+} */
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -17,17 +17,17 @@
 body {
   /* color: var(--foreground);
   background: var(--background); */
-  background-color: #ffffff;
-  color: #000000;
+  /* background-color: #ffffff;
+  color: #000000; */
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
 }
 
-:root {
+/* :root {
   --font-nunito: "Nunito", sans-serif;
   --font-kantumruy-pro: "Kantumruy Pro", sans-serif;
-}
+} */
 
 /* Font utility classes */
 .font-nunito {

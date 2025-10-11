@@ -81,8 +81,8 @@
     "description": "Convert date into Khmer Lunar date",
     "inputLabel": "Type text in date format",
     "chooseDate": "ជ្រើសរើសកាលបរិច្ឆេទ",
-    "copySuccess": "បានចម្លងកាលបរិច្ឆេទ!",
-    "copyDate": "ចម្លង"
+    "copySuccess": "បានចម្លង!",
+    "copyDate": "ចម្លងកាលបរិច្ឆេទ"
   },
   "JsonData": {
     "title": "ទិន្នន័យ Json",
