@@ -101,14 +101,25 @@
     "dragLabel": "Drag your file here",
     "clickLabel": "or click to select an image",
     "result": "Result",
-    "fileName": "FileName",
-    "fileSize": "FileSize",
+    "fileName": "Name",
+    "fileSize": "Size",
     "progress": "Progress",
+    "progressing": "Processing...",
+    "noImage": "No Image",
+    "encode": "Encoded",
+    "width": "Width",
+    "height": "height",
     "converted": "Converted",
     "actions": "Actions",
     "copyImage": "Copy Image",
     "copyCss": "Copy Css",
     "copySuccess": "Copied!",
-    "waring": "File is too big. Max filesize: 5MiB."
+    "warning": "File is too big. Max filesize: 5MiB.",
+    "showCode": "Show Code",
+    "toggleBg": "Toggle Background",
+    "imgElement": "For use in <img/> elements",
+    "cssElement": "For use as CSS background",
+    "error": "Error",
+    "base64Code": "Base64 Code"
   }
 }

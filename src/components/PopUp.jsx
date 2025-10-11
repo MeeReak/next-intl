@@ -19,7 +19,7 @@ export const PopUp = ({ show, onClose, title, children }) => {
     >
       <div
         onClick={(e) => e.stopPropagation()} // prevent closing when clicking inside
-        className="relative bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-neutral-200 dark:border-neutral-800 w-[90%] max-w-lg p-6 animate-scaleIn"
+        className="relative bg-white dark:bg-neutral-900 rounded-xl shadow-xl border border-neutral-200 dark:border-neutral-800 w-[90%] max-w-lg p-6 pt-5 animate-scaleIn"
       >
         {/* Header */}
         <div className="flex justify-between items-center mb-4">
