@@ -14,7 +14,8 @@
     "description": "This is the about page of the website"
   },
   "notFound": {
-    "title": "Page not found",
+    "title": "404 Not Found",
+    "h1": "Oops! Looks like this page is lost",
     "description": "Sorry, we couldn't find that page.",
     "back": "Click here to go back to the homepage"
   },

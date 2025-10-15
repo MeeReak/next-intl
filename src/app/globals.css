@@ -51,9 +51,9 @@ html.dark body {
 }
 
 /* Optional: style other elements globally */
-html.dark a {
+/* html.dark a {
   color: #93c5fd;
-}
+} */
 
 #hide-scrollbar {
   -ms-overflow-style: none; /* IE and Edge */
@@ -84,3 +84,13 @@ textarea::-webkit-scrollbar {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+/* not found page */
+#four_zero_four_bg {
+  background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+

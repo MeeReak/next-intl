@@ -14,8 +14,9 @@
     "description": "នេះគឺជាទំព័រអំពីយើង"
   },
   "notFound": {
-    "title": "មិនឃើញទំព័រ",
-    "description": "សូមអភ័យទោស មិនអាចរកឃើញទំព័រនេះបានទេ។",
+    "title": "404 Not Found",
+    "h1": "Oops! Looks like this page is lost",
+    "description": "សូមអភ័យទោស មិនអាចរកឃើញទំព័រនេះទេ។",
     "back": "សូមចុចទីនេះដើម្បីត្រឡប់ទៅទំព័រដើម"
   },
   "CaseConverter": {
