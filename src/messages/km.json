@@ -22,7 +22,7 @@
   "CaseConverter": {
     "title": "កម្មវិធីបម្លែងអក្សរ",
     "description": "បម្លែងអត្ថបទទៅជារូបមន្តអក្សរផ្សេងៗបានយ៉ាងងាយស្រួល។",
-    "inputLabel": "វាយអត្ថបទ អក្សរ ឬនិមិត្តសញ្ញានៅទីនេះ៖",
+    "inputLabel": "វាយអត្ថបទ អក្សរ ឬនិមិត្តសញ្ញានៅទីនេះ",
     "sentence": "Sentence case",
     "lower": "lower case",
     "upper": "UPPER CASE",
@@ -34,6 +34,7 @@
     "noSymbol": "No Symbol",
     "download": "ទាញយក",
     "copy": "ចម្លង",
+    "copySuccess": "បានចម្លង!",
     "clear": "សម្អាត",
     "stats": {
       "character": "ចំនួនអក្សរ",
